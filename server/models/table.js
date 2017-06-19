@@ -1,22 +1,20 @@
 class Table { // session
-	let players = [];
-
-	constructor(game, players){
+	constructor(game, players = []){
 		this.game = game;
 		this.players = players; //takes array
 	}
 	
-	function addPlayer (player){
-		this.players.push(player);
+	function addPlayers (players = []){
+		this.players.concat(player);
 	}
 }
 
 class TableManager {
-	constructor(tables) {
+	constructor(tables = []) {
 		this.tables = tables;
 	}
-	function addTable (table){
-		this.tables.push(table);
+	function addTables (tables = []){
+		this.tables.concat(tables);
 	}
 }
 export {table}
