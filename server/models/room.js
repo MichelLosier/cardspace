@@ -1,8 +1,8 @@
 class Room { // session
-	constructor(id, game, players = []){
+	constructor(id){
 		this.id = id;
-		this.game = game;
-		this.players = players; //takes array
+		this.players = [];
+		this.games = [];
 	}
 	
 	addPlayers (players = []){

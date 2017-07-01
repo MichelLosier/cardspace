@@ -1,21 +1,25 @@
-import {Room} from '../models/room'
+import { Room } from '../models/room'
+import { crypto } from 'crypto' as Crypto;
 
-class RoomManager {
-	constructor() {
-		this.Rooms = Rooms;
-	}
+let rooms = {};
 
-	createRoom () {
-		let roomId = this.Rooms.length;
-		let newRoom = new Room(roomId, games, players); //Using array index as ID;
-		this.Rooms.push(newRoom)
-		
-		return roomID
-	}
-
-	addRooms (Rooms = []){
-		this.Rooms.concat(Rooms);
-	}
+function createRoom () {
+	let roomId = generateId(20);
+	rooms[roomId] = new Room(roomId, games, players);
+	
+	return roomId;
 }
 
-export {RoomManager}
+function getRooms() {
+	return rooms;
+}
+
+function getRoom(id) {
+	return rooms[id];
+}
+
+function generateId(byteLen) {
+	return Crypto.randomBytes(byteLen);
+}
+
+export {createRoom,getRooms}
