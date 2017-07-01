@@ -1,20 +1,20 @@
-import { Room } from '../models/room'
-import { crypto } from 'crypto' as Crypto;
+const Room = require('../models/room');
+const Crypto = require('crypto');
 
-let rooms = {};
+const rooms = {};
 
-function createRoom () {
+exports.createRoom = function  () {
 	let roomId = generateId(20);
-	rooms[roomId] = new Room(roomId, games, players);
+	rooms[roomId] = new Room(roomId);
 	
 	return roomId;
 }
 
-function getRooms() {
+exports.getRooms = function () {
 	return rooms;
 }
 
-function getRoom(id) {
+exports.getRoom = function (id) {
 	return rooms[id];
 }
 
@@ -22,4 +22,3 @@ function generateId(byteLen) {
 	return Crypto.randomBytes(byteLen);
 }
 
-export {createRoom,getRooms}

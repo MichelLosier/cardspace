@@ -11,4 +11,4 @@ class Room { // session
 
 }
 
-export {Room}
+module.exports = Room;

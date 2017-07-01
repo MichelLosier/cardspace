@@ -14,4 +14,4 @@ rootRoutes.POST = function(req, res) {
 }
 
 
-export {rootRoutes}
+module.exports = rootRoutes;

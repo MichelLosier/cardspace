@@ -1,7 +1,5 @@
-import * as GM from '../services/gameManger';
+const GM = require('../services/gameManger');
 
-createGame = function(req, res, next) {
+exports.createGame = function(req, res, next) {
 	return GM.createGame(req.room, req.users);
 };
-
-export { createGame }

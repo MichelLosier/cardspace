@@ -1,8 +1,8 @@
-import { express } from 'express';
-import { rootRoutes } as root from './routes/root';
-import { roomRoutes } as room from './routes/room';
+const express = require('express');
+const root = require('./routes/root');
+const room = require('./routes/room')
 
-var router = express.Router();
+const router = express.Router();
 
 
 // /api
@@ -17,4 +17,4 @@ router.route('/room/create').post(room.create.POST);
 router.route('/room/:id').get(room.id.GET);
 router.route('/room/:id').post(room.id.POST);
 
-export {router}
+module.exports = router;

@@ -1,4 +1,4 @@
-// import {createRoom} from '../../services/gameManger';
+const roomManager = require('../../services/roomManger');
 
 let roomRoutes = {
 	create: {},
@@ -9,7 +9,7 @@ let roomRoutes = {
 // POST - /api/room/create
 roomRoutes.create.POST = function(req, res) {
 	//Room manager controller create room, get relevant data, send back
-	let newRoomId = createRoom();
+	let newRoomId = roomManager.createRoom();
 	res.json({"POST":"ROOM CREATED - ID:" + newRoomId});
 }
 
@@ -30,4 +30,4 @@ roomRoutes.GET = function(req, res) {
 
 
 
-export {roomRoutes}
+module.exports = roomRoutes;
