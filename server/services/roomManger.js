@@ -19,6 +19,6 @@ exports.getRoom = function (id) {
 }
 
 function generateId(byteLen) {
-	return Crypto.randomBytes(byteLen);
+	return Crypto.randomBytes(byteLen).toString('hex');
 }
 
