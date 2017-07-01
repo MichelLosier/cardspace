@@ -2,25 +2,23 @@ import { Game } from '../models/game';
 import { RoomManager } from '../services/roomManager';
 import { crypto } from 'crypto' as Crypto;
 
-class GameManager {
-	constructor() {
-		this.games = [];
-	}
+this.games = []
 
-	createGame(room, users) {
-		const gameId = Crypto.randomBytes(20);
-		const game = new Game(gameId, room, users);
-		this.games.push(game);
-		
-	}
-
-	updateGame(gameId, state){
-
-	}
-
-	endGame(){
-
-	}
+createGame = function (room, users) {
+	const gameId = Crypto.randomBytes(20);
+	const game = new Game(gameId, room, users);
+	this.games.push(game);
+	return gameId;
+	
 }
 
-export {GameManager}
+updateGame = function (gameId, state){
+
+}
+
+endGame = function (){
+
+}
+
+
+export {createGame, updateGame, endGame}
