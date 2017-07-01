@@ -25,4 +25,4 @@ class Card {
 		//TODO
 	}
 }
-export {Game, Deck, Card}
+export {Game}
