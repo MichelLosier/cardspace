@@ -31,4 +31,5 @@ class Card {
 		//TODO
 	}
 }
-export {Game}
+
+module.exports = Game;
