@@ -16,4 +16,4 @@ class Spectator extends User {
 	}
 }
 
-export {User,Player,Spectator}
+module.exports = {User:User,Player:Player,Spectator:Spectator};
