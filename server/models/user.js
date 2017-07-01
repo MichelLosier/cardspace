@@ -16,4 +16,4 @@ class Spectator extends User {
 	}
 }
 
-export {Player, Spectator}
+export {User,Player,Spectator}
