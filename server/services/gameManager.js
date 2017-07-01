@@ -2,22 +2,27 @@ import { Game } from '../models/game';
 import { RoomManager } from '../services/roomManager';
 import { crypto } from 'crypto' as Crypto;
 
-this.games = []
+const games = {}
+
+getGame = function (gameId) {
+	return games[gameId];
+}
 
 createGame = function (room, users) {
 	const gameId = Crypto.randomBytes(20);
 	const game = new Game(gameId, room, users);
-	this.games.push(game);
-	return gameId;
-	
+
+	games[gameId] = game;
+	return gameId;	
 }
 
 updateGame = function (gameId, state){
-
+	games[gameId].updateState(state);
+	return games[gameId].state;
 }
 
-endGame = function (){
-
+endGame = function (gameId){
+	delete games[gameId];
 }
 
 
