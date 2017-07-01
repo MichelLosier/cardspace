@@ -1,5 +1,7 @@
+import {Room} from '../models/room'
+
 class RoomManager {
-	constructor(Rooms = []) {
+	constructor() {
 		this.Rooms = Rooms;
 	}
 
