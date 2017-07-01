@@ -1,4 +1,6 @@
-var roomRoutes = {
+// import {createRoom} from '../../services/gameManger';
+
+let roomRoutes = {
 	create: {},
 	id: {}
 }
@@ -7,8 +9,8 @@ var roomRoutes = {
 // POST - /api/room/create
 roomRoutes.create.POST = function(req, res) {
 	//Room manager controller create room, get relevant data, send back
-
-	res.json({"POST":"ROOM CREATED - ID"});
+	let newRoomId = createRoom();
+	res.json({"POST":"ROOM CREATED - ID:" + newRoomId});
 }
 
 // GET - /api/room/:id
@@ -28,4 +30,4 @@ roomRoutes.GET = function(req, res) {
 
 
 
-module.exports = roomRoutes;
+export {roomRoutes}

@@ -1,8 +1,8 @@
-var express  = require('express');
+import { router } as apiRouter from './api/router';
+import { express } from 'express';
+
 var app = express();
 var path = require('path');
-var apiRouter = require('./api/router.js')
-
 
 app.use('/', express.static(path.join(__dirname, '../build')));
 
