@@ -1,5 +1,5 @@
-// import { createRoom } from '../services/roomManager';
+const roomManager = require('../services/roomManger');
 
-// function createRoom() {
-	
-// }
+exports.createRoom = function() {
+	return roomManager.createRoom();
+}

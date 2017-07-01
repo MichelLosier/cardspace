@@ -1,4 +1,4 @@
-const roomManager = require('../../services/roomManger');
+const gameController = require('../../controllers/roomController')
 
 let roomRoutes = {
 	create: {},
@@ -9,7 +9,7 @@ let roomRoutes = {
 // POST - /api/room/create
 roomRoutes.create.POST = function(req, res) {
 	//Room manager controller create room, get relevant data, send back
-	let newRoomId = roomManager.createRoom();
+	let newRoomId = gameController.createRoom();
 	res.json({"POST":"ROOM CREATED - ID:" + newRoomId});
 }
 

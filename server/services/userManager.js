@@ -4,4 +4,4 @@ class UserManager {
 	}
 }
 
-export {UserManager}
+module.exports = UserManager;
