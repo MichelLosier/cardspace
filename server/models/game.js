@@ -1,7 +1,13 @@
 class Game {
-	constructor(decks=[]){
-		this.decks = decks;
+	constructor(id, room, users = []){
+		this.id = id;
+		this.roomId = room;
+		this.players = users;
+		this.state = {};
 		//TODO
+	}
+	updateState(state){
+		this.state = state;
 	}
 }
 
