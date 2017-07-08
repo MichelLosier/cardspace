@@ -1,18 +1,28 @@
 class User {
-	constructor(name){
-		this.name = name;
+	constructor(id, alias){
+		this.id = id;
+		this.alias = alias;
+	}
+
+	toJSON() {
+		return {
+			id: this.id,
+			alias: this.alias
+		}
 	}
 }
 
 class Player extends User {
-	constructor(name){
-		super(name);
+	constructor(id, alias){
+		super(id);
+		super(alias);
 	}
 }
 
 class Spectator extends User {
-	constructor(name){
-		super(name);
+	constructor(id, alias){
+		super(id);
+		super(alias);
 	}
 }
 

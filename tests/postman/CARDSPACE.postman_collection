@@ -64,6 +64,62 @@
 			"response": []
 		},
 		{
+			"name": "/api/user/create",
+			"request": {
+				"url": "http://localhost:8080/api/user/create",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/user/USER_ID",
+			"request": {
+				"url": "http://localhost:8080/api/user/USER_ID",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/user/USER_ID",
+			"request": {
+				"url": "http://localhost:8080/api/user/USER_ID",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/user",
+			"request": {
+				"url": "http://localhost:8080/api/user",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},		
+		{
 			"name": "/api",
 			"request": {
 				"url": "http://localhost:8080/api",
