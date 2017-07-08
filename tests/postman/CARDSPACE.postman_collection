@@ -43,7 +43,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"name\" : \"Ping Test for google\",  \"frequency\" : 1440, \"uri\" : \"http://google.com\",   \"locations\" : [ \"AWS_US_WEST_1\" ],   \"status\" : \"ENABLED\",  \"type\" : \"SIMPLE\", \"slaThreshold\" : 7.0, \"options\" : {\"validationString\" : \"my validation string\", \"verifySSL\" : true, \"bypassHEADRequest\" : true, \"treatRedirectAsFailure\" : true} }"
+					"raw": ""
 				},
 				"description": ""
 			},
@@ -57,7 +57,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"name\" : \"Ping Test for google\",  \"frequency\" : 1440, \"uri\" : \"http://google.com\",   \"locations\" : [ \"AWS_US_WEST_1\" ],   \"status\" : \"ENABLED\",  \"type\" : \"SIMPLE\", \"slaThreshold\" : 7.0, \"options\" : {\"validationString\" : \"my validation string\", \"verifySSL\" : true, \"bypassHEADRequest\" : true, \"treatRedirectAsFailure\" : true} }"
+					"raw": ""
 				},
 				"description": ""
 			},
@@ -71,7 +71,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"name\" : \"Ping Test for google\",  \"frequency\" : 1440, \"uri\" : \"http://google.com\",   \"locations\" : [ \"AWS_US_WEST_1\" ],   \"status\" : \"ENABLED\",  \"type\" : \"SIMPLE\", \"slaThreshold\" : 7.0, \"options\" : {\"validationString\" : \"my validation string\", \"verifySSL\" : true, \"bypassHEADRequest\" : true, \"treatRedirectAsFailure\" : true} }"
+					"raw": ""
 				},
 				"description": ""
 			},
