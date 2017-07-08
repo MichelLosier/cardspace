@@ -25,4 +25,4 @@ exports.endGame = function (gameId){
 	delete Games[gameId];
 }
 
-
+exports.Games = Games;
