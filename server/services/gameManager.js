@@ -1,5 +1,5 @@
 const Game = require('../models/game');
-const RoomManager = require('./roomManger');
+const RoomManager = require('./roomManager');
 const Crypto = require('crypto');
 
 const Games = {}
