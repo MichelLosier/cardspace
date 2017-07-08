@@ -1,28 +1,28 @@
 const Game = require('../models/game');
-const RoomManager = require('../services/roomManager');
+const RoomManager = require('./roomManger');
 const Crypto = require('crypto');
 
-const games = {}
+const Games = {}
 
 exports.getGame = function (gameId) {
-	return games[gameId];
+	return Games[gameId];
 }
 
 exports.createGame = function (room, users) {
-	const gameId = Crypto.randomBytes(20);
+	const gameId = Crypto.randomBytes(20).toString('hex');
 	const game = new Game(gameId, room, users);
 
-	games[gameId] = game;
+	Games[gameId] = game;
 	return gameId;	
 }
 
 exports.updateGame = function (gameId, state){
-	games[gameId].updateState(state);
-	return games[gameId].state;
+	Games[gameId].updateState(state);
+	return Games[gameId].state;
 }
 
 exports.endGame = function (gameId){
-	delete games[gameId];
+	delete Games[gameId];
 }
 
 

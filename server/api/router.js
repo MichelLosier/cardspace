@@ -1,5 +1,6 @@
 const express = require('express');
 const root = require('./routes/root');
+const gameCtlr = require('../controllers/gameController')
 const roomController = require('../controllers/roomController');
 const userController = require('../controllers/userController');
 
@@ -25,4 +26,15 @@ router.post('/user/create', userController.create.POST);
 router.get('/user/:id', userController.id.GET);
 router.post('/user/:id', userController.id.POST);
 
+// /api/games
+// /api/games/*
+
+//games GET
+router.get('/games', gameCtlr.getAllGames);
+router.get('/games/id/:_id', gameCtlr.getGame);
+
+//games POST
+router.post('/games', gameCtlr.createGame);
+//games PATCH
+//games DELETE
 module.exports = router;
