@@ -146,6 +146,54 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/games",
+			"request": {
+				"url": "http://localhost:8080/api/games",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/games/id/",
+			"request": {
+				"url": "http://localhost:8080/api/games/id/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/games",
+			"request": {
+				"url": "http://localhost:8080/api/games",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"room\":\"test-room\", \"users\":[\"user1\",\"user2\"]}"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
