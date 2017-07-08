@@ -33,13 +33,7 @@ userRoutes.id.POST = function(req, res) {
 userRoutes.GET = function(req, res) {
 
 	let users = userManager.getUsers();
-	let response = [];
-
-	for (userId in users) {
-		response.push(users[userId].toJSON());
-	}
-
-	res.status(200).json(response);
+	res.status(200).json(users);
 }
 
 module.exports = userRoutes;

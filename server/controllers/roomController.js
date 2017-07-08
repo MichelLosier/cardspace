@@ -29,13 +29,7 @@ roomRoutes.id.POST = function(req, res) {
 roomRoutes.GET = function(req, res) {
 
 	let rooms = roomManager.getRooms();
-	let response = [];
-
-	for (roomId in rooms) {
-		response.push(rooms[roomId].toJSON());
-	}
-
-	res.status(200).json(response);
+	res.status(200).json(rooms);
 }
 
 module.exports = roomRoutes;
