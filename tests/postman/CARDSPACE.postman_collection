@@ -16,12 +16,14 @@
 					{
 						"key": "X-Api-Key",
 						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Host",
@@ -47,12 +49,14 @@
 					{
 						"key": "X-Api-Key",
 						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Host",
@@ -78,12 +82,14 @@
 					{
 						"key": "X-Api-Key",
 						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Host",
@@ -109,12 +115,14 @@
 					{
 						"key": "X-Api-Key",
 						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Host",
@@ -140,12 +148,14 @@
 					{
 						"key": "X-Api-Key",
 						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Host",
@@ -171,12 +181,14 @@
 					{
 						"key": "X-Api-Key",
 						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"description": ""
+						"description": "",
+						"disabled": true
 					},
 					{
 						"key": "Host",
