@@ -1,4 +1,4 @@
-const roomManager = require('../services/roomManger');
+const roomManager = require('../services/roomManager');
 
 let roomRoutes = {
 	create: {},
