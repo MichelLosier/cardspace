@@ -1,7 +1,8 @@
 const express = require('express');
 const root = require('./routes/root');
-const room = require('./routes/room')
 const gameCtlr = require('../controllers/gameController')
+const roomController = require('../controllers/roomController');
+const userController = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -13,10 +14,17 @@ router.route('/').post(root.POST);
 
 // /api/room
 // /api/room/*
-router.route('/room').get(room.GET);
-router.route('/room/create').post(room.create.POST);
-router.route('/room/:id').get(room.id.GET);
-router.route('/room/:id').post(room.id.POST);
+router.get('/room', roomController.GET);
+router.post('/room/create', roomController.create.POST);
+router.get('/room/:id', roomController.id.GET);
+router.post('/room/:id', roomController.id.POST);
+
+// /api/user
+// /api/user/*
+router.get('/user', userController.GET);
+router.post('/user/create', userController.create.POST);
+router.get('/user/:id', userController.id.GET);
+router.post('/user/:id', userController.id.POST);
 
 // /api/games
 // /api/games/*

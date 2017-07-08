@@ -12,27 +12,10 @@
 			"request": {
 				"url": "http://localhost:8080/api/room/create",
 				"method": "POST",
-				"header": [
-					{
-						"key": "X-Api-Key",
-						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Host",
-						"value": "",
-						"description": "",
-						"disabled": true
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"name\" : \"Ping Test for google\",  \"frequency\" : 1440, \"uri\" : \"http://google.com\",   \"locations\" : [ \"AWS_US_WEST_1\" ],   \"status\" : \"ENABLED\",  \"type\" : \"SIMPLE\", \"slaThreshold\" : 7.0, \"options\" : {\"validationString\" : \"my validation string\", \"verifySSL\" : true, \"bypassHEADRequest\" : true, \"treatRedirectAsFailure\" : true} }"
+					"raw": ""
 				},
 				"description": ""
 			},
@@ -43,27 +26,10 @@
 			"request": {
 				"url": "http://localhost:8080/api/room/ROOM_ID",
 				"method": "POST",
-				"header": [
-					{
-						"key": "X-Api-Key",
-						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Host",
-						"value": "",
-						"description": "",
-						"disabled": true
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"name\" : \"Ping Test for google\",  \"frequency\" : 1440, \"uri\" : \"http://google.com\",   \"locations\" : [ \"AWS_US_WEST_1\" ],   \"status\" : \"ENABLED\",  \"type\" : \"SIMPLE\", \"slaThreshold\" : 7.0, \"options\" : {\"validationString\" : \"my validation string\", \"verifySSL\" : true, \"bypassHEADRequest\" : true, \"treatRedirectAsFailure\" : true} }"
+					"raw": ""
 				},
 				"description": ""
 			},
@@ -74,27 +40,10 @@
 			"request": {
 				"url": "http://localhost:8080/api/room/ROOM_ID",
 				"method": "GET",
-				"header": [
-					{
-						"key": "X-Api-Key",
-						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Host",
-						"value": "",
-						"description": "",
-						"disabled": true
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"name\" : \"Ping Test for google\",  \"frequency\" : 1440, \"uri\" : \"http://google.com\",   \"locations\" : [ \"AWS_US_WEST_1\" ],   \"status\" : \"ENABLED\",  \"type\" : \"SIMPLE\", \"slaThreshold\" : 7.0, \"options\" : {\"validationString\" : \"my validation string\", \"verifySSL\" : true, \"bypassHEADRequest\" : true, \"treatRedirectAsFailure\" : true} }"
+					"raw": ""
 				},
 				"description": ""
 			},
@@ -105,58 +54,80 @@
 			"request": {
 				"url": "http://localhost:8080/api/room",
 				"method": "GET",
-				"header": [
-					{
-						"key": "X-Api-Key",
-						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Host",
-						"value": "",
-						"description": "",
-						"disabled": true
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"name\" : \"Ping Test for google\",  \"frequency\" : 1440, \"uri\" : \"http://google.com\",   \"locations\" : [ \"AWS_US_WEST_1\" ],   \"status\" : \"ENABLED\",  \"type\" : \"SIMPLE\", \"slaThreshold\" : 7.0, \"options\" : {\"validationString\" : \"my validation string\", \"verifySSL\" : true, \"bypassHEADRequest\" : true, \"treatRedirectAsFailure\" : true} }"
+					"raw": ""
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
+			"name": "/api/user/create",
+			"request": {
+				"url": "http://localhost:8080/api/user/create",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/user/USER_ID",
+			"request": {
+				"url": "http://localhost:8080/api/user/USER_ID",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/user/USER_ID",
+			"request": {
+				"url": "http://localhost:8080/api/user/USER_ID",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/user",
+			"request": {
+				"url": "http://localhost:8080/api/user",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},		
+		{
 			"name": "/api",
 			"request": {
 				"url": "http://localhost:8080/api",
 				"method": "GET",
-				"header": [
-					{
-						"key": "X-Api-Key",
-						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Host",
-						"value": "",
-						"description": "",
-						"disabled": true
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"name\" : \"Ping Test for google\",  \"frequency\" : 1440, \"uri\" : \"http://google.com\",   \"locations\" : [ \"AWS_US_WEST_1\" ],   \"status\" : \"ENABLED\",  \"type\" : \"SIMPLE\", \"slaThreshold\" : 7.0, \"options\" : {\"validationString\" : \"my validation string\", \"verifySSL\" : true, \"bypassHEADRequest\" : true, \"treatRedirectAsFailure\" : true} }"
+					"raw": ""
 				},
 				"description": ""
 			},
@@ -167,27 +138,10 @@
 			"request": {
 				"url": "http://localhost:8080/api",
 				"method": "POST",
-				"header": [
-					{
-						"key": "X-Api-Key",
-						"value": "8b260388adecb0a843a6fd00fb1882d9",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Host",
-						"value": "",
-						"description": "",
-						"disabled": true
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"name\" : \"Ping Test for google\",  \"frequency\" : 1440, \"uri\" : \"http://google.com\",   \"locations\" : [ \"AWS_US_WEST_1\" ],   \"status\" : \"ENABLED\",  \"type\" : \"SIMPLE\", \"slaThreshold\" : 7.0, \"options\" : {\"validationString\" : \"my validation string\", \"verifySSL\" : true, \"bypassHEADRequest\" : true, \"treatRedirectAsFailure\" : true} }"
+					"raw": ""
 				},
 				"description": ""
 			},
