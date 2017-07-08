@@ -11,7 +11,10 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use('/', express.static(path.join(__dirname, '../build')));
 
 app.use('/api/', apiRouter);
-
+app.use(function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
+});
 
 let port = process.env.PORT || 8080;
 

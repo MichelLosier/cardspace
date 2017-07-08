@@ -1,5 +1,5 @@
 const Game = require('../models/game');
-const RoomManager = require('./roomManger');
+const RoomManager = require('./roomManager');
 const Crypto = require('crypto');
 
 const Games = {}
@@ -25,4 +25,4 @@ exports.endGame = function (gameId){
 	delete Games[gameId];
 }
 
-
+exports.Games = Games;
