@@ -1,18 +1,28 @@
+const DEFAULT_ROOM_SIZE = 4;
+
 class Room { // session
-	constructor(id){
+	constructor(id, roomSize){
 		this.id = id;
-		this.players = [];
+		this.users = [];
 		this.games = [];
+		this.roomSize = roomSize ? roomSize : DEFAULT_ROOM_SIZE;
 	}
 	
-	addPlayers (players = []){
-		this.players.concat(player);
+	addUsers (users = []){
+		this.users.concat(user);
 	}
+
+	addUser (id) {
+		this.users.push(id);
+	}
+
+	
 
 	toJSON() {
 		return {
 			id: this.id,
-			players: this.players,
+			users: this.users,
+			roomSize: this.roomSize,
 			games: this.games
 		}
 	}

@@ -18,6 +18,10 @@ exports.getUser = function (id) {
 	return users[id];
 }
 
+exports.userExists = function(id) {
+	return users[id] ? true : false;
+}
+
 function generateId(byteLen) {
 	return Crypto.randomBytes(byteLen).toString('hex');
 }
