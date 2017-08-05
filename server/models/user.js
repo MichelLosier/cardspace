@@ -14,15 +14,13 @@ class User {
 
 class Player extends User {
 	constructor(id, alias){
-		super(id);
-		super(alias);
+		super(id, alias);
 	}
 }
 
 class Spectator extends User {
 	constructor(id, alias){
-		super(id);
-		super(alias);
+		super(id, alias);
 	}
 }
 
