@@ -4,7 +4,7 @@ const baseHeaders = new Headers({
 });
 // get user
 //TODO get id from local storage
-function getUser(id){
+exports.getUser = function getUser(id, callback){
     const request = new Request(`${baseUrl}${id}`, {
         method: 'GET',
         headers: baseHeaders.assign({
@@ -13,6 +13,9 @@ function getUser(id){
     });
     fetch(request).then((response) => {
         return response.json();
+    }).then((data) => {
+        callback(data);
+        return data;
     })
     .catch((err) => {
         return this.handleError(err);
@@ -21,30 +24,30 @@ function getUser(id){
 
 
 //create user
-function createUser(user){
-    const data = JSON.stringify({
-        alias: user.alias
-    });
-    const request = new Request(`${baseUrl}`,{
+exports.createUser = function createUser(user, callback){
+    const data = {
+        alias: user
+    };
+    const request = new Request(`${baseUrl}create`,{
         method: 'POST',
-        body: data,
+        body: JSON.stringify(data),
         headers: baseHeaders
     });
     fetch(request).then((response) => {
-        const user = {
-            _id: response.body
-        }
-        localStorage.setItem('user', user);
         return response.json();
+    }).then((data) => {
+        localStorage.setItem('user', data._id);
+        callback(data);
+        return data;
     })
     .catch((err) => {
-        return this.handleError(err);
+        return console.log(err);
     })
 }
 //
 
 function handleError(err){
-    const body = err.json()
+    const body = JSON.parse(err);
     const errMsg = body.error || JSON.stringify(body)
     const error = `${err.status} - ${err.statusText || ''} ${errMsg}`;
     console.log(error);
