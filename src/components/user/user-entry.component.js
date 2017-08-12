@@ -39,7 +39,7 @@ class UserEntry extends React.Component {
                 <form id="user-create" onSubmit={this.handleSubmit}>
                     <label for="user">User Name</label>
                     <input name="user" type="text" onChange={this.handleChange}></input>
-                    <input type="submit" value="submit"></input>
+                    <input className="hover-border"type="submit" value="Create"></input>
                 </form>
             </div>
         </div>
