@@ -1,5 +1,6 @@
 import React from 'react';
 import UserEntry from './user/user-entry.component'
+import '../main.css';
 
 class Main extends React.Component {
     constructor(){
@@ -21,12 +22,17 @@ class Main extends React.Component {
        const user = this.state.user;
        return(
         <div>
-            <div class="layout-container">
-                <div class="main-header row">
-                    <p>UserId: {user.id}</p>
-                    <p>Logged In: {user.alias}</p>
+            <div className="layout-container">
+                <div className="main-header row">
+                    <div>
+                        <h1>cardspace</h1>
+                    </div>
+                    <div>
+                        <p>UserId: {user.id}</p>
+                        <p>Logged In: {user.alias}</p>
+                    </div>
                 </div>
-                <div class="main-body row">
+                <div className="main-body row">
                     <UserEntry 
                         setLocalUser={this.setLocalUser}
                     />

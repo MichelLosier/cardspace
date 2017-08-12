@@ -30,8 +30,9 @@ class UserEntry extends React.Component {
     render(){
         const userName = this.state.form.userName
        return(
-        <div>
+        <div className="component-container">
             <div>
+                <h2> Create User</h2>
                 <p>Form username: {userName}</p>
             </div>
             <div>
