@@ -30,7 +30,7 @@ class UserEntry extends React.Component {
     render(){
         const userName = this.state.form.userName
        return(
-        <div className="component-container">
+        <div className="component-container border">
             <div>
                 <h2> Create User</h2>
                 <p>Form username: {userName}</p>
@@ -39,7 +39,7 @@ class UserEntry extends React.Component {
                 <form id="user-create" onSubmit={this.handleSubmit}>
                     <label for="user">User Name</label>
                     <input name="user" type="text" onChange={this.handleChange}></input>
-                    <input className="hover-border"type="submit" value="Create"></input>
+                    <input className="hover-border" type="submit" value="Create"></input>
                 </form>
             </div>
         </div>
