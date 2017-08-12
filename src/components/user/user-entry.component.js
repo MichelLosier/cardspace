@@ -1,11 +1,10 @@
 import React from 'react';
-import { createUser } from '../services/user.service';
+import { createUser } from '../../services/user.service';
 
 class UserEntry extends React.Component {
     constructor(){
         super();
         this.state = {
-            userId: "",
             form: {
                 userName: "Test"
             }
@@ -17,7 +16,7 @@ class UserEntry extends React.Component {
         e.preventDefault();
         const name = this.state.form.userName;
         createUser(name, (data) => {
-            this.setState({userId: data._id});
+            this.props.setLocalUser(data);
         });
     }
         
@@ -29,13 +28,11 @@ class UserEntry extends React.Component {
     }
 
     render(){
-        const userId = this.state.userId;
         const userName = this.state.form.userName
        return(
         <div>
             <div>
-                <p>UserId: {userId}</p>
-                <p>User name: {userName}</p>
+                <p>Form username: {userName}</p>
             </div>
             <div>
                 <form id="user-create" onSubmit={this.handleSubmit}>

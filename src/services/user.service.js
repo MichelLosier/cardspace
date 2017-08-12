@@ -36,7 +36,7 @@ exports.createUser = function createUser(user, callback){
     fetch(request).then((response) => {
         return response.json();
     }).then((data) => {
-        localStorage.setItem('user', data._id);
+        localStorage.setItem('user', data.id);
         callback(data);
         return data;
     })
@@ -46,10 +46,10 @@ exports.createUser = function createUser(user, callback){
 }
 //
 
-function handleError(err){
-    const body = JSON.parse(err);
-    const errMsg = body.error || JSON.stringify(body)
-    const error = `${err.status} - ${err.statusText || ''} ${errMsg}`;
-    console.log(error);
-    return error
-}
+// function handleError(err){
+//     const body = JSON.parse(err);
+//     const errMsg = body.error || JSON.stringify(body)
+//     const error = `${err.status} - ${err.statusText || ''} ${errMsg}`;
+//     console.log(error);
+//     return error
+// }
