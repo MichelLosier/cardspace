@@ -62,7 +62,6 @@ roomRoutes.id.PATCH = function(req, res) {
 		}
 	} else if (action == "LEAVE") {
 		try {
-			//This doesn't actually work yet
 			roomManager.removeUser(roomId,userId)
 		} catch (err) {
 			res.status(500).json({error:err.message});

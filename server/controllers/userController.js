@@ -12,7 +12,7 @@ userRoutes.create.POST = function(req, res) {
 		res.status(400).json({"reason":"missing user alias"})
 	} else {
 		let newUserId = userManager.createUser(req.body.alias);
-		res.status(201).json({"_id": newUserId});
+		res.status(201).json({"id": newUserId, "alias": req.body.alias});
 	}
 }
 
