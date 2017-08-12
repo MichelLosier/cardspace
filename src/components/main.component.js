@@ -1,48 +1,36 @@
 import React from 'react';
-import { createUser } from '../services/user.service';
+import UserEntry from './user/user-entry.component'
 
 class Main extends React.Component {
     constructor(){
         super();
         this.state = {
-            userId: "",
-            form: {
-                userName: "Test"
+            user: {
+                id: undefined,
+                alias: undefined
             }
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.setLocalUser = this.setLocalUser.bind(this);
     }
-    handleSubmit(e){
-        e.preventDefault();
-        const name = this.state.form.userName;
-        createUser(name, (data) => {
-            this.setState({userId: data._id});
-        });
-    }
-        
 
-    handleChange(e){
-        const name = e.target.value;
-        this.setState({form: {userName: name}
-        });
+    setLocalUser(user) {
+        this.setState({user: user});
     }
 
     render(){
-        const userId = this.state.userId;
-        const userName = this.state.form.userName
+       const user = this.state.user;
        return(
         <div>
-            <div>
-                <p>UserId: {userId}</p>
-                <p>User name: {userName}</p>
-            </div>
-            <div>
-                <form id="user-create" onSubmit={this.handleSubmit}>
-                    <label for="user">User Name</label>
-                    <input name="user" type="text" onChange={this.handleChange}></input>
-                    <input type="submit" value="submit"></input>
-                </form>
+            <div class="layout-container">
+                <div class="main-header row">
+                    <p>UserId: {user.id}</p>
+                    <p>Logged In: {user.alias}</p>
+                </div>
+                <div class="main-body row">
+                    <UserEntry 
+                        setLocalUser={this.setLocalUser}
+                    />
+                </div>
             </div>
         </div>
        );
