@@ -25,7 +25,12 @@ exports.addUser = function (id, userId) {
 }
 
 exports.removeUser = function (id, userId) {
-	//TODO: Everything..
+	let room = rooms[id];
+	if (room.users.indexOf(userId) > -1) {
+		room.removeUser(userId);
+	} else {
+		throw Error(`${userId} not found in room ${id}`)
+	}
 }
 
 exports.getRooms = function () {

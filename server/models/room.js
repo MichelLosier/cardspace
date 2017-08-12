@@ -16,6 +16,10 @@ class Room { // session
 		this.users.push(id);
 	}
 
+	removeUser(id) {
+		this.users.splice(this.users.indexOf(id), 1)
+	}
+
 	
 
 	toJSON() {
