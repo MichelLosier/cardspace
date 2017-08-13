@@ -32,8 +32,7 @@ class UserEntry extends React.Component {
        return(
         <div className="component-container border">
             <div>
-                <h2> Create User</h2>
-                <p>Form username: {userName}</p>
+                <h2> Create A User</h2>
             </div>
             <div>
                 <form id="user-create" onSubmit={this.handleSubmit}>

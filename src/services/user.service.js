@@ -4,27 +4,25 @@ const baseHeaders = new Headers({
 });
 // get user
 //TODO get id from local storage
-exports.getUser = function getUser(id, callback){
-    const request = new Request(`${baseUrl}${id}`, {
+export function getUser(id, callback){
+    const request = new Request(`${baseUrl}?id=${id}`, {
         method: 'GET',
-        headers: baseHeaders.assign({
-            'User-Id': localStorage.getItem('user')
-        })
+        headers: baseHeaders
     });
     fetch(request).then((response) => {
         return response.json();
     }).then((data) => {
-        callback(data);
+        if(callback){callback(data)};
         return data;
     })
     .catch((err) => {
-        return this.handleError(err);
+         return console.log(err);
     })
 }
 
 
 //create user
-exports.createUser = function createUser(user, callback){
+export function createUser(user, callback){
     const data = {
         alias: user
     };
@@ -36,8 +34,8 @@ exports.createUser = function createUser(user, callback){
     fetch(request).then((response) => {
         return response.json();
     }).then((data) => {
-        localStorage.setItem('user', data.id);
-        callback(data);
+        localStorage.setItem('uid', data.id);
+        if(callback){callback(data);}
         return data;
     })
     .catch((err) => {

@@ -1,5 +1,8 @@
 import React from 'react';
-import UserEntry from './user/user-entry.component'
+import { Route, Link }  from 'react-router-dom';
+
+import { getUser } from '../services/user.service';
+import UserEntry from './user/user-entry.component';
 import '../main.css';
 
 class Main extends React.Component {
@@ -14,8 +17,33 @@ class Main extends React.Component {
         this.setLocalUser = this.setLocalUser.bind(this);
     }
 
+    componentWillMount(){
+        this.checkLocalUser();
+    }
+
+    checkLocalUser(){
+        const id = window.localStorage.getItem('uid');
+        if (id) {
+            getUser(id, (data) => {
+                console.log(data[id]);
+                this.setLocalUser(data[id]);
+            });
+        }
+    }
+
     setLocalUser(user) {
-        this.setState({user: user});
+        const id = window.localStorage.getItem('uid');
+        if (id) {
+            this.setState({user: user});
+        }
+    }
+
+    //Views
+    _UserEntry(props){
+        return(<UserEntry
+            setLocalUser={this.setLocalUser}
+            {...props}
+        />);
     }
 
     render(){
@@ -33,9 +61,10 @@ class Main extends React.Component {
                     </div>
                 </div>
                 <div className="main-body row">
-                    <UserEntry 
-                        setLocalUser={this.setLocalUser}
-                    />
+                    <Route 
+                        path="/" 
+                        render={(props) => this._UserEntry(props)}
+                     />
                 </div>
             </div>
         </div>
