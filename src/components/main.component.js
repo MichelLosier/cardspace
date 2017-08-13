@@ -1,9 +1,11 @@
 import React from 'react';
 import { Route, Link }  from 'react-router-dom';
 
-import { getUser } from '../services/user.service';
+import UserService from '../services/user.service';
 import UserEntry from './user/user-entry.component';
 import '../main.css';
+
+const User$ = new UserService();
 
 class Main extends React.Component {
     constructor(){
@@ -24,7 +26,7 @@ class Main extends React.Component {
     checkLocalUser(){
         const id = window.localStorage.getItem('uid');
         if (id) {
-            getUser(id, (data) => {
+            User$.getUser(id, (data) => {
                 console.log(data[id]);
                 this.setLocalUser(data[id]);
             });

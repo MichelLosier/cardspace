@@ -38,14 +38,33 @@ h2, h3 {
     height:90vh
 }
 
-.component-container {
+.center-align {
     align-items: center;
-    width: 75%;
-    padding: 1rem;
+    text-align: center;
 }
 
 .border {
     border: 1px solid rgba(119, 191, 163, 1.0);
+}
+
+/* Container width based on max 12 containers*/
+.component-container {
+    padding: 1rem;
+}
+.width-12 {
+    width: 100%;
+}
+.width-9 {
+    width: 75%
+}
+.width-6 {
+    width: 50%;
+}
+.width-4 {
+    width: 33.33%
+}
+.width-3 {
+    width: 25%; 
 }
 
 /* Form Elements  */
