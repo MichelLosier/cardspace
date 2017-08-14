@@ -16,10 +16,6 @@ h2, h3 {
 /* Layout */
 
 .layout-container {
-
-}
-
-.layout-container .row{
     display: flex;
     width: 100%;
     align-items: center;

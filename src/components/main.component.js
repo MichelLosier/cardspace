@@ -52,8 +52,8 @@ class Main extends React.Component {
        const user = this.state.user;
        return(
         <div>
-            <div className="layout-container">
-                <div className="main-header row">
+            <div>
+                <div className="main-header layout-container">
                     <div>
                         <h1>cardspace</h1>
                     </div>
@@ -62,7 +62,7 @@ class Main extends React.Component {
                         <p>Logged In: {user.alias}</p>
                     </div>
                 </div>
-                <div className="main-body row">
+                <div className="main-body layout-container">
                     <Route 
                         path="/" 
                         render={(props) => this._UserEntry(props)}
