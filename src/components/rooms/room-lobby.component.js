@@ -3,6 +3,8 @@ import RoomList from './room-list.component';
 
 import RoomService from '../../services/room.service';
 
+const Room$ = new RoomService();
+
 class RoomLobby extends React.Component {
     constructor(){
         super();
@@ -22,7 +24,7 @@ class RoomLobby extends React.Component {
     }
 
     getRoomList(){
-        RoomService.getRooms((rooms) => {
+        Room$.getRooms((rooms) => {
             this.setState({rooms: rooms });
         });
     }
