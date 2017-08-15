@@ -43,6 +43,12 @@ h2, h3 {
     border: 1px solid rgba(119, 191, 163, 1.0);
 }
 
+.popup {
+    position: absolute;
+    z-index: 1;
+    background: white;
+}
+
 /* Container width based on max 12 containers*/
 .component-container {
     padding: 1rem;
@@ -98,4 +104,16 @@ label {
 .hover-background:hover {
     background-color: rgba(152, 201, 163, 1.0);
     cursor: pointer;
+}
+
+/*object lists*/
+ul.object-list {
+	border: 1px solid #666;
+	padding: 0 1rem;
+}
+
+.object-list li {
+	margin: 1rem;
+	list-style: none;
+	border: 1px solid #666;
 }

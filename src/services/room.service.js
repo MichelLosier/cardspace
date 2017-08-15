@@ -70,13 +70,12 @@ class RoomService {
     //			action: "JOIN" or "LEAVE"
     //		}
     updateRoom(id, data, callback){
-        const headers = {
-            'user-id': localStorage.getItem('uid')
-        }
-        _headers = baseHeaders.assign(headers);
+        const headers = this.baseHeaders.assign({
+                'user-id': localStorage.getItem('uid')
+            });
         const request = new Request(`${this.baseUrl}?:${id}`, {
             method: 'PATCH',
-            headers: this.baseHeaders,
+            headers: headers,
             body: data
         });
         fetch(request).then((response) => {
@@ -92,4 +91,4 @@ class RoomService {
 
 }
 
-export default RoomService
+export default RoomService;

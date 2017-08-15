@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Link }  from 'react-router-dom';
 
+import RoomLobby from './rooms/room-lobby.component';
 import UserService from '../services/user.service';
 import UserEntry from './user/user-entry.component';
 import '../main.css';
@@ -11,6 +12,7 @@ class Main extends React.Component {
     constructor(){
         super();
         this.state = {
+            userLoggedIn: false,
             user: {
                 id: undefined,
                 alias: undefined
@@ -19,7 +21,7 @@ class Main extends React.Component {
         this.setLocalUser = this.setLocalUser.bind(this);
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.checkLocalUser();
     }
 
@@ -36,20 +38,32 @@ class Main extends React.Component {
     setLocalUser(user) {
         const id = window.localStorage.getItem('uid');
         if (id) {
-            this.setState({user: user});
+            this.setState({
+                userLoggedIn: true,
+                user: user
+            });
         }
     }
 
     //Views
     _UserEntry(props){
-        return(<UserEntry
-            setLocalUser={this.setLocalUser}
-            {...props}
-        />);
+        return(
+            <UserEntry
+                setLocalUser={this.setLocalUser}
+            />
+        );
+    }
+
+    _RoomLobby(props){
+        return(
+            <RoomLobby
+                {...props}
+            />
+        );
     }
 
     render(){
-       const user = this.state.user;
+       const state = this.state;
        return(
         <div>
             <div>
@@ -58,15 +72,18 @@ class Main extends React.Component {
                         <h1>cardspace</h1>
                     </div>
                     <div>
-                        <p>UserId: {user.id}</p>
-                        <p>Logged In: {user.alias}</p>
+                        <p>UserId: {state.user.id}</p>
+                        <p>Logged In: {state.user.alias}</p>
                     </div>
                 </div>
                 <div className="main-body layout-container">
+                    {!state.userLoggedIn &&
+                        this._UserEntry()
+                    }
                     <Route 
                         path="/" 
-                        render={(props) => this._UserEntry(props)}
-                     />
+                        render={(props) => this._RoomLobby(props)}
+                    />
                 </div>
             </div>
         </div>

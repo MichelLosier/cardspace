@@ -6,28 +6,34 @@ class RoomList extends React.Component {
 
     }
 
+
+
     roomListing(rooms){
         const roomList = rooms.map((room) => {
             return (
-                <li
-                    key={room.id}
-                >
+                <li key={room.id}>
                     {room.name}
                 </li>
-            )
+            );
         });
 
         return roomList;
     }
 
     render(){
-        const rooms = this.props.rooms;
+        const rooms = this.props.list;
         return(
             <div>
-                <ul>
-                    {this.roomListing(rooms)}
+                <ul className="object-list">
+                    {(!rooms.length === 0) ? (
+                        this.roomListing(rooms)
+                        ) : (
+                        <p>No Rooms Available</p>
+                        )
+                    }
                 </ul>
             </div>
         );
     }
 }
+export default RoomList;

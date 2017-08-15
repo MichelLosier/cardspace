@@ -34,7 +34,7 @@ class UserEntry extends React.Component {
     render(){
         const userName = this.state.form.userName
        return(
-        <div className="component-container width-3 border center-align">
+        <div className="component-container width-3 border center-align popup">
             <div>
                 <h2> Create A User</h2>
             </div>

@@ -30,12 +30,13 @@ class RoomLobby extends React.Component {
     }
 
     render(){
-        const roomList = this.state.rooms;
+        const list = this.state.rooms;
         
         return(
-            <div className="layout-container">
+            <div className="center-align">
+                <h2>Rooms</h2>
                 <RoomList
-                    roomList={roomList}
+                    list={list}
                     onRoomSelect={this.setSelectedRoom}
                 />
             </div>
