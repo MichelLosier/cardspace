@@ -2,12 +2,19 @@ const Room = require('../models/room');
 const Crypto = require('crypto');
 
 const rooms = {};
+const DEFAULT_ROOM_SIZE = 4;
+const DEFAULT_ROOM_OWNER = "Anonymous"
 
-exports.createRoom = function  () {
-	let roomId = generateId(20);
-	rooms[roomId] = new Room(roomId);
+exports.createRoom = function(owner, alias,roomSize) {
+
+	alias = alias ? alias : generateRoomAlias();
+	roomSize = roomSize ? roomSize : DEFAULT_ROOM_SIZE;
+	owner = owner ? owner : DEFAULT_ROOM_OWNER;
+
+	let roomId = generateRoomId(20);
+	rooms[roomId] = new Room(roomId,alias,roomSize,owner);
 	
-	return roomId;
+	return rooms[roomId];
 }
 
 exports.addUser = function (id, userId) {
@@ -45,7 +52,15 @@ exports.roomExists = function(id) {
 	return rooms[id] ? true : false;
 }
 
-function generateId(byteLen) {
+function generateRoomId(byteLen) {
 	return Crypto.randomBytes(byteLen).toString('hex');
+}
+
+function generateRoomAlias() {
+	let owners = ["Mike","Bob","Manyon","Ol' Gil","Trump","Dr. Phil","God"];
+	let adjectives = ["messy","radiant","decrepit","immaculate","final","understated","private","personal","outrageous", "disgusting", "super fun", "super lame"];
+	let spaces = ["game area","office","chillzone","living room","house","outhouse","bedroom","garage","man cave"];
+
+	return `${owners[Math.floor(Math.random()*owners.length)]}'s ${adjectives[Math.floor(Math.random()*adjectives.length)]} ${spaces[Math.floor(Math.random()*spaces.length)]}`
 }
 

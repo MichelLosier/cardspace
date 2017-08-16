@@ -8,6 +8,10 @@ exports.authenticateUser = function(req, res, next) {
     if (userId) {
     	if (authenticationService.authenticateUser(userId)) {
             console.log(`User ${userId} authenticated`);
+
+            //http://expressjs.com/en/api.html#res.locals
+            res.locals.user = userId;
+
     	} else {
     		res.status(401).json({message:"Unauthorized"});
             return
