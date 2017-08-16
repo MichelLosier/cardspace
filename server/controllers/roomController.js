@@ -62,10 +62,10 @@ roomRoutes.id.PATCH = function(req, res) {
         let room = roomManager.getRoom(roomId);
         //Room doesn't exist
         //TODO: Place this logic outside of this function for all /roomid/ calls
-        if (!room) {
-            res.status(400).json({
-                message: `Room ${req.params.id} not found`
-            })
+        if (!roomManager.roomExists(req.params.id)) {
+            res.status(404).json({
+                message: req.params.id + ' not found'
+            });
             return;
         }
         //User id == null
