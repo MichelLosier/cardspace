@@ -1,8 +1,9 @@
 const DEFAULT_ROOM_SIZE = 4;
 
 class Room { // session
-	constructor(id, roomSize){
+	constructor(id, name, roomSize){
 		this.id = id;
+		this.name = name;
 		this.users = [];
 		this.games = [];
 		this.roomSize = roomSize ? roomSize : DEFAULT_ROOM_SIZE;

@@ -1,12 +1,15 @@
 import React from 'react';
-import { createUser } from '../../services/user.service';
+
+import UserService from '../../services/user.service';
+
+const User$ = new UserService();
 
 class UserEntry extends React.Component {
     constructor(){
         super();
         this.state = {
             form: {
-                userName: "Test"
+                userName: ""
             }
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,9 +18,10 @@ class UserEntry extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         const name = this.state.form.userName;
-        createUser(name, (data) => {
+        User$.createUser(name, (data) => {
             this.props.setLocalUser(data);
         });
+        this.setState({form:{ userName: ""}});
     }
         
 
@@ -30,15 +34,14 @@ class UserEntry extends React.Component {
     render(){
         const userName = this.state.form.userName
        return(
-        <div className="component-container border">
+        <div className="component-container width-3 border center-align popup">
             <div>
-                <h2> Create User</h2>
-                <p>Form username: {userName}</p>
+                <h2> Create A User</h2>
             </div>
             <div>
                 <form id="user-create" onSubmit={this.handleSubmit}>
                     <label for="user">User Name</label>
-                    <input name="user" type="text" onChange={this.handleChange}></input>
+                    <input name="user" type="text" value={this.state.form.userName} onChange={this.handleChange}></input>
                     <input className="hover-border" type="submit" value="Create"></input>
                 </form>
             </div>

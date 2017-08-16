@@ -16,10 +16,6 @@ h2, h3 {
 /* Layout */
 
 .layout-container {
-
-}
-
-.layout-container .row{
     display: flex;
     width: 100%;
     align-items: center;
@@ -38,13 +34,39 @@ h2, h3 {
     height:90vh
 }
 
-.component-container {
+.center-align {
     align-items: center;
-    width: 75%;
+    text-align: center;
 }
 
 .border {
     border: 1px solid rgba(119, 191, 163, 1.0);
+}
+
+.popup {
+    position: absolute;
+    z-index: 1;
+    background: white;
+}
+
+/* Container width based on max 12 containers*/
+.component-container {
+    padding: 1rem;
+}
+.width-12 {
+    width: 100%;
+}
+.width-9 {
+    width: 75%
+}
+.width-6 {
+    width: 50%;
+}
+.width-4 {
+    width: 33.33%
+}
+.width-3 {
+    width: 25%; 
 }
 
 /* Form Elements  */
@@ -82,4 +104,16 @@ label {
 .hover-background:hover {
     background-color: rgba(152, 201, 163, 1.0);
     cursor: pointer;
+}
+
+/*object lists*/
+ul.object-list {
+	border: 1px solid #666;
+	padding: 0 1rem;
+}
+
+.object-list li {
+	margin: 1rem;
+	list-style: none;
+	border: 1px solid #666;
 }
