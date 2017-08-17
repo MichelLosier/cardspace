@@ -109,11 +109,31 @@ label {
 /*object lists*/
 ul.object-list {
 	border: 1px solid #666;
-	padding: 0 1rem;
+	padding: 1rem;
 }
 
 .object-list li {
-	margin: 1rem;
-	list-style: none;
-	border: 1px solid #666;
+    list-style: none;
+    border: 1px solid #666;
+    padding: 1rem;
+    width: auto;
+    border-bottom: none;
+    display:flex;
+    align-items:center;
+}
+
+.object-list li:last-child {
+    border-bottom: 1px solid #666;
+}
+
+.object-list li:hover {
+   background-color: rgba(91, 216, 189, 1.0)
+}
+
+.object-list li div {
+    margin-right:1rem;
+}
+
+.object-list li div:last-child {
+    margin-right:0;
 }
