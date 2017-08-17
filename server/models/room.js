@@ -1,12 +1,11 @@
-const DEFAULT_ROOM_SIZE = 4;
-
 class Room { // session
-	constructor(id, name, roomSize){
+	constructor(id, alias, roomSize, owner){
 		this.id = id;
-		this.name = name;
+		this.alias = alias;
 		this.users = [];
 		this.games = [];
-		this.roomSize = roomSize ? roomSize : DEFAULT_ROOM_SIZE;
+		this.roomSize = roomSize;
+		this.owner = owner;
 	}
 	
 	addUsers (users = []){
@@ -28,7 +27,9 @@ class Room { // session
 			id: this.id,
 			users: this.users,
 			roomSize: this.roomSize,
-			games: this.games
+			games: this.games,
+			alias: this.alias,
+			owner: this.owner
 		}
 	}
 
