@@ -41,7 +41,11 @@ exports.removeUser = function (id, userId) {
 }
 
 exports.getRooms = function () {
-	return rooms;
+	var roomArray = [];
+	for (var roomId in rooms) { 
+		roomArray.push(rooms[roomId])
+	}
+	return roomArray;
 }
 
 exports.getRoom = function (id) {
