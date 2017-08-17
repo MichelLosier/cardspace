@@ -26,10 +26,12 @@ class RoomList extends React.Component {
         return(
             <div>
                 <ul className="object-list">
-                    {(!rooms.length === 0) ? (
+                    {(rooms.length != 0) ? (
                         this.roomListing(rooms)
                         ) : (
-                        <p>No Rooms Available</p>
+                        <div>
+                            <p>No Rooms Available</p>
+                        </div>
                         )
                     }
                 </ul>
