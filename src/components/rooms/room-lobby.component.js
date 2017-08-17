@@ -15,8 +15,9 @@ class RoomLobby extends React.Component {
         this.setSelectedRoom = this.setSelectedRoom.bind(this);
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.getRoomList();
+        
     }
 
     setSelectedRoom(room) {
@@ -30,8 +31,8 @@ class RoomLobby extends React.Component {
     }
 
     render(){
-        const list = this.state.rooms;
         
+        const list = this.state.rooms;
         return(
             <div className="center-align">
                 <h2>Rooms</h2>
