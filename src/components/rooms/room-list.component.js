@@ -12,7 +12,7 @@ class RoomList extends React.Component {
         const roomList = rooms.map((room) => {
             return (
                 <li key={room.id}>
-                    {room.name}
+                    {room.alias}
                 </li>
             );
         });
