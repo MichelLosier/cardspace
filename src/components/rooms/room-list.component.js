@@ -1,4 +1,5 @@
 import React from 'react';
+import RoomListItem from './room-list-item.component';
 
 class RoomList extends React.Component {
     constructor(){
@@ -6,15 +7,18 @@ class RoomList extends React.Component {
 
     }
 
-
-
     roomListing(rooms){
         const roomList = rooms.map((room) => {
+            const selectedRoom = this.props.selectedRoom;
+            const selected = (selectedRoom) ? (room.id == this.props.selectedRoom.id) : false;
+ 
             return (
-                <li key={room.id}>
-                    <div>{room.alias}</div>
-                    <div>{room.users.length} / {room.roomSize}</div>
-                </li>
+                <RoomListItem 
+                    key={room.id}
+                    room={room}
+                    selected={selected}
+                    onSelect={this.props.onRoomSelect}
+                />
             );
         });
 
@@ -24,7 +28,10 @@ class RoomList extends React.Component {
     render(){
         const rooms = this.props.list;
         return(
-            <div>
+            <div className="component-container border center-align">
+                <div className="header">
+                    <h3>Rooms</h3>
+                </div>
                 <ul className="object-list">
                     {(rooms.length != 0) ? (
                         this.roomListing(rooms)
