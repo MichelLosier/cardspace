@@ -4,6 +4,8 @@ import { Route, Link }  from 'react-router-dom';
 import RoomLobby from './rooms/room-lobby.component';
 import UserService from '../services/user.service';
 import UserEntry from './user/user-entry.component';
+import Room from './rooms/room.component';
+
 import '../main.css';
 
 const User$ = new UserService();
@@ -62,6 +64,14 @@ class Main extends React.Component {
         );
     }
 
+    _Room(props){
+        return(
+            <Room
+                {...props}
+            />
+        )
+    }
+
     render(){
        const state = this.state;
        return(
@@ -81,8 +91,12 @@ class Main extends React.Component {
                         this._UserEntry()
                     }
                     <Route 
-                        path="/" 
+                       exact path="/" 
                         render={(props) => this._RoomLobby(props)}
+                    />
+                    <Route 
+                        path="/room/:roomId"
+                        render={(props) => this._Room(props)}
                     />
                 </div>
             </div>
