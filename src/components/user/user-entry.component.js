@@ -34,18 +34,18 @@ class UserEntry extends React.Component {
     render(){
         const userName = this.state.form.userName
        return(
-        <div className="component-container width-3 border center-align popup">
-            <div>
-                <h2> Create A User</h2>
+            <div className="component-container width-6 border center-align popup">
+                <div className="header">
+                    <h2> Create A User</h2>
+                </div>
+                <div>
+                    <form id="user-create" onSubmit={this.handleSubmit}>
+                        <label for="user">User Name</label>
+                        <input name="user" type="text" value={this.state.form.userName} onChange={this.handleChange}></input>
+                        <input className="hover-border" type="submit" value="Create"></input>
+                    </form>
+                </div>
             </div>
-            <div>
-                <form id="user-create" onSubmit={this.handleSubmit}>
-                    <label for="user">User Name</label>
-                    <input name="user" type="text" value={this.state.form.userName} onChange={this.handleChange}></input>
-                    <input className="hover-border" type="submit" value="Create"></input>
-                </form>
-            </div>
-        </div>
        );
     }
 }

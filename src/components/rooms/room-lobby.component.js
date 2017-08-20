@@ -1,5 +1,6 @@
 import React from 'react';
 import RoomList from './room-list.component';
+import RoomDetail from './room-detail.component';
 
 import RoomService from '../../services/room.service';
 
@@ -31,15 +32,25 @@ class RoomLobby extends React.Component {
     }
 
     render(){
-        
+        const selectedRoom = this.state.selectedRoom;
         const list = this.state.rooms;
         return(
-            <div className="center-align">
-                <h2>Rooms</h2>
-                <RoomList
-                    list={list}
-                    onRoomSelect={this.setSelectedRoom}
-                />
+            <div className="center-align width-12">
+                <div className="header">
+                    <h2>Room Lobby</h2>
+                </div>
+                <div className="layout-container">
+                    {(selectedRoom) && 
+                        <RoomDetail
+                            room={selectedRoom}
+                        />
+                    }
+                    <RoomList
+                        list={list}
+                        onRoomSelect={this.setSelectedRoom}
+                        selectedRoom={selectedRoom}
+                    />
+                </div>
             </div>
         );
     }
