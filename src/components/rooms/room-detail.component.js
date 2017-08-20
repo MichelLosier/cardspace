@@ -1,4 +1,5 @@
 import React from 'react';
+import {Route, Link} from 'react-router-dom';
 
 class RoomDetail extends React.Component {
     constructor(){
@@ -36,7 +37,7 @@ class RoomDetail extends React.Component {
                         </ul>
                     </div>
                 <div>
-                    <input className="hover-border" type="submit" value="Join Room"></input>
+                    <Link className="button hover-border" to={`/room/${room.id}`}>Join Room</Link>
                 </div>
             </div>
         )
