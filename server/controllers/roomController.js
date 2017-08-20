@@ -1,14 +1,13 @@
 const roomManager = require('../services/roomManager');
+const userManager = require('../services/userManager');
 let roomRoutes = {
         create: {},
         id: {}
     }
-
-
-// POST - /api/room/create
-// Takes JSON payload for roomsize and alias:
-// {  alias:"room alias",
-//	  roomSize: 20 }
+    // POST - /api/room/create
+    // Takes JSON payload for roomsize and alias:
+    // {  alias:"room alias",
+    //    roomSize: 20 }
 roomRoutes.create.POST = function(req, res) {
         //Room manager controller create room, get relevant data, send back
         var alias = req.body.alias;
@@ -26,9 +25,7 @@ roomRoutes.create.POST = function(req, res) {
         let newRoom = roomManager.createRoom(res.locals.user, alias, roomSize);
         res.status(201).json(newRoom);
     }
-
-
-// GET - /api/room/:id
+    // GET - /api/room/:id
 roomRoutes.id.GET = function(req, res) {
         if (!roomManager.roomExists(req.params.id)) {
             res.status(404).json({
@@ -36,26 +33,27 @@ roomRoutes.id.GET = function(req, res) {
             });
             return;
         }
-        let roomJSON = roomManager.getRoom(req.params.id).toJSON();
-        res.status(200).json(roomJSON);
+        let roomObj = roomManager.getRoom(req.params.id).toJSON();
+ 
+            roomObj.users = roomObj.users.map(function(userId) {
+                return userManager.getUser(userId);
+            });
+   
+        res.status(200).json(roomObj);
     }
-
-
-// POST - /api/room/:id
+    // POST - /api/room/:id
 roomRoutes.id.POST = function(req, res) {
         res.status(200).json({
             "GET": "POST ROOM ID: " + req.params.id
         });
     }
-
-
-// PATCH - /api/room/:id
-// Join/Leave room
-// Expects:
-//     HEADER:  user-id: "USER_ID" 
-//	   BODY: {
-//			action: "JOIN" or "LEAVE"
-//		}
+    // PATCH - /api/room/:id
+    // Join/Leave room
+    // Expects:
+    //     HEADER:  user-id: "USER_ID" 
+    //     BODY: {
+    //          action: "JOIN" or "LEAVE"
+    //      }
 roomRoutes.id.PATCH = function(req, res) {
         var action = req.body.action;
         var roomId = req.params.id;
@@ -103,13 +101,9 @@ roomRoutes.id.PATCH = function(req, res) {
         // Everything went fine? Return updated room status as JSON
         res.status(200).json(room.toJSON())
     }
-
-
-// GET - /api/room
+    // GET - /api/room
 roomRoutes.GET = function(req, res) {
     let rooms = roomManager.getRooms();
     res.status(200).json(rooms);
 }
-
-
 module.exports = roomRoutes;
