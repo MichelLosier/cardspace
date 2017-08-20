@@ -7,7 +7,7 @@ exports.createUser = function(alias) {
 	let userId = generateId(20);
 	users[userId] = new User.User(userId, alias);
 	
-	return userId;
+	return users[userId];
 }
 
 exports.getUsers = function () {
