@@ -5,10 +5,21 @@ body {
     height: 100vh;
 }
 h1 {
+    margin: 0;
+    font-size: 2.25rem;
     color: white;
 }
 
+h2 {
+    font-size: 1.75rem
+}
+
+h3 {
+    font-size: 1.5rem
+}
+
 h2, h3 {
+    margin: 0;
     color: rgba(119, 191, 163, 1.0)
 }
 
@@ -18,7 +29,7 @@ h2, h3 {
 .layout-container {
     display: flex;
     width: 100%;
-    align-items: center;
+    justify-content:space-evenly;
 }
 
 .main-header {
@@ -26,17 +37,23 @@ h2, h3 {
     color: white;
     justify-content: space-between;
     min-height: 10vh;
+    align-items: center;
 
 }
 
 .main-body {
+    align-items: flex-start;
     justify-content: space-around;
-    height:90vh
+    height:90vh;
 }
 
 .center-align {
     align-items: center;
     text-align: center;
+}
+
+.header {
+    margin: 2rem;
 }
 
 .border {
@@ -45,13 +62,15 @@ h2, h3 {
 
 .popup {
     position: absolute;
-    z-index: 1;
+    z-index: 99;
     background: white;
+    align-self: center;
 }
 
 /* Container width based on max 12 containers*/
 .component-container {
-    padding: 1rem;
+    padding: 2rem;
+    padding-top:0;
 }
 .width-12 {
     width: 100%;
@@ -108,26 +127,36 @@ label {
 
 /*object lists*/
 ul.object-list {
-	border: 1px solid #666;
-	padding: 1rem;
+    padding: 1px;
+    margin: 0;
+    overflow-y: scroll;
+    background-color: #EDEEC9;
+    border:1px solid #666;
+    height:470px
 }
 
 .object-list li {
     list-style: none;
-    border: 1px solid #666;
+    border-top: 1px solid #666;
+    background-color:white;
     padding: 1rem;
     width: auto;
-    border-bottom: none;
     display:flex;
     align-items:center;
+    cursor: pointer;
+}
+
+.object-list li:first-child {
+    border-top:none;
 }
 
 .object-list li:last-child {
     border-bottom: 1px solid #666;
 }
 
-.object-list li:hover {
-   background-color: rgba(91, 216, 189, 1.0)
+.object-list li:hover, .object-list li.selected {
+   background-color: rgba(91, 216, 189, 1.0);
+   color: white;
 }
 
 .object-list li div {
@@ -137,3 +166,4 @@ ul.object-list {
 .object-list li div:last-child {
     margin-right:0;
 }
+
