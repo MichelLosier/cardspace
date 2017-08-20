@@ -13,21 +13,13 @@ class RoomList extends React.Component {
             const selected = (selectedRoom) ? (room.id == this.props.selectedRoom.id) : false;
  
             return (
-<<<<<<< HEAD
-                <li key={room.id}>
 
-                    <div>{room.alias}</div>
-                    <div>{room.users.length} / {room.roomSize}</div>
-
-                </li>
-=======
                 <RoomListItem 
                     key={room.id}
                     room={room}
                     selected={selected}
                     onSelect={this.props.onRoomSelect}
                 />
->>>>>>> a327b75aeff269ce056c7a510a3af0525f17a7d3
             );
         });
 
