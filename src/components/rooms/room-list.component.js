@@ -26,6 +26,10 @@ class RoomList extends React.Component {
         return roomList;
     }
 
+    showRoomCreate(){
+        this.props.onShowRoomCreate();
+    }
+
     render(){
         const rooms = this.props.list;
         return(
@@ -43,6 +47,7 @@ class RoomList extends React.Component {
                         )
                     }
                 </ul>
+                <button className="button hover-border" onClick={this.showRoomCreate.bind(this)}>Create Room</button>
             </div>
         );
     }

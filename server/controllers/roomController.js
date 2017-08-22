@@ -11,16 +11,19 @@ let roomRoutes = {
 roomRoutes.create.POST = function(req, res) {
         //Room manager controller create room, get relevant data, send back
         var alias = req.body.alias;
-        var roomSize = req.body.roomSize;
+        var roomSize = parseInt(req.body.roomSize);
+
         if (alias && (typeof alias != "string")) {
             res.status(400).json({
                 message: "alias requires a string"
             })
+            return;
         }
-        if (roomSize && (typeof roomSize != "number")) {
+        if (isNaN(roomSize)) {
             res.status(400).json({
                 message: "roomSize requires a number"
-            })
+            });
+            return;
         }
         let newRoom = roomManager.createRoom(res.locals.user, alias, roomSize);
         res.status(201).json(newRoom);

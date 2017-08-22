@@ -1,6 +1,7 @@
 import React from 'react';
 import RoomList from './room-list.component';
 import RoomDetail from './room-detail.component';
+import RoomCreate from './room-create.component';
 
 import RoomService from '../../services/room.service';
 
@@ -11,9 +12,12 @@ class RoomLobby extends React.Component {
         super();
         this.state = {
             rooms: [],
-            selectedRoom: undefined
+            selectedRoom: undefined,
+            roomCreateVisible: false
         };
         this.setSelectedRoom = this.setSelectedRoom.bind(this);
+        this.showRoomCreate = this.showRoomCreate.bind(this);
+        this.finishRoomCreate = this.finishRoomCreate.bind(this);
     }
 
     componentDidMount(){
@@ -31,11 +35,23 @@ class RoomLobby extends React.Component {
         });
     }
 
+    showRoomCreate() {
+        this.setState({roomCreateVisible: true})
+    }
+
+    finishRoomCreate(updateRooms) {
+        this.setState({roomCreateVisible: !this.state.roomCreateVisible}) 
+        if (updateRooms == true) {
+            this.getRoomList()
+        }
+    }
+
     render(){
         const selectedRoom = this.state.selectedRoom;
         const list = this.state.rooms;
         return(
             <div className="center-align width-12">
+                {this.state.roomCreateVisible ? <RoomCreate onFinish={this.finishRoomCreate} /> : null}
                 <div className="header">
                     <h2>Room Lobby</h2>
                 </div>
@@ -49,7 +65,12 @@ class RoomLobby extends React.Component {
                         list={list}
                         onRoomSelect={this.setSelectedRoom}
                         selectedRoom={selectedRoom}
+                        onShowRoomCreate={this.showRoomCreate}
                     />
+                </div>
+                <div>
+                
+                
                 </div>
             </div>
         );
