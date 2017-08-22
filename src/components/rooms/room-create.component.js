@@ -62,8 +62,8 @@ class RoomCreate extends React.Component {
                         <label for="size">Room Size</label>
                         <input name="size" type="text" value={this.state.roomSize} onChange={this.sizeChange}></input>
                         <input className="hover-border" type="submit" value="Create"></input>
-                        <input className="hover-border" type="button" value="Cancel" onClick={this.closeForm}></input>
                     </form>
+                    <a href="javascript:;" className="button hover-border" type="button" onClick={this.closeForm}>Cancel</a>
                 </div>
             </div>
        );

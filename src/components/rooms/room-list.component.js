@@ -37,17 +37,21 @@ class RoomList extends React.Component {
                 <div className="header">
                     <h3>Rooms</h3>
                 </div>
-                <ul className="object-list">
-                    {(rooms.length != 0) ? (
-                        this.roomListing(rooms)
-                        ) : (
-                        <div>
-                            <p>No Rooms Available</p>
-                        </div>
-                        )
-                    }
-                </ul>
-                <button className="button hover-border" onClick={this.showRoomCreate}>Create Room</button>
+                <div className="component-container">
+                    <ul className="object-list">
+                        {(rooms.length != 0) ? (
+                            this.roomListing(rooms)
+                            ) : (
+                            <div>
+                                <p>No Rooms Available</p>
+                            </div>
+                            )
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <a href="javascript:;" className="button hover-border" onClick={this.showRoomCreate}>Create Room</a>
+                </div>
             </div>
         );
     }
