@@ -4,7 +4,7 @@ import RoomListItem from './room-list-item.component';
 class RoomList extends React.Component {
     constructor(){
         super();
-
+        this.showRoomCreate = this.showRoomCreate.bind(this);
     }
 
     roomListing(rooms){
@@ -47,7 +47,7 @@ class RoomList extends React.Component {
                         )
                     }
                 </ul>
-                <button className="button hover-border" onClick={this.showRoomCreate.bind(this)}>Create Room</button>
+                <button className="button hover-border" onClick={this.showRoomCreate}>Create Room</button>
             </div>
         );
     }

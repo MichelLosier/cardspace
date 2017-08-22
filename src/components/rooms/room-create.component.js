@@ -9,10 +9,11 @@ class RoomCreate extends React.Component {
         super();
         this.state = {
             roomName:"",
-            roomSize:4
+            roomSize: 4
         }
 
         this.nameChange = this.nameChange.bind(this)
+        this.sizeChange = this.sizeChange.bind(this)
         this.closeForm = this.closeForm.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -26,8 +27,6 @@ class RoomCreate extends React.Component {
             console.log(data);
         });
         this.closeForm(true);
-        this.sizeChange.bind(this);
-        this.sizeChange.bind(this);
     }
 
     closeForm(updateRooms) {

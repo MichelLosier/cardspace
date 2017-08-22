@@ -68,10 +68,6 @@ class RoomLobby extends React.Component {
                         onShowRoomCreate={this.showRoomCreate}
                     />
                 </div>
-                <div>
-                
-                
-                </div>
             </div>
         );
     }
