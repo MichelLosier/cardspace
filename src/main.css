@@ -134,6 +134,11 @@ a.button {
     cursor: pointer;
 }
 
+.inline-form-button {
+    display: inline-block;
+    margin: .4rem;
+}
+
 /*object lists*/
 ul.object-list {
     padding: 1px;

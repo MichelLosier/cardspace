@@ -39,10 +39,11 @@ class RoomLobby extends React.Component {
         this.setState({roomCreateVisible: true})
     }
 
-    finishRoomCreate(updateRooms) {
+    finishRoomCreate(newRoom) {
         this.setState({roomCreateVisible: !this.state.roomCreateVisible}) 
-        if (updateRooms == true) {
+        if (newRoom.id) { //Checking for id (is this a room object) because otherwise an event object gets passed here.
             this.getRoomList()
+            this.setSelectedRoom(newRoom);
         }
     }
 
@@ -51,12 +52,13 @@ class RoomLobby extends React.Component {
         const list = this.state.rooms;
         return(
             <div className="center-align width-12">
-                {this.state.roomCreateVisible ? <RoomCreate onFinish={this.finishRoomCreate} /> : null}
+                
                 <div className="header">
                     <h2>Room Lobby</h2>
                 </div>
                 <div className="layout-container">
-                    {(selectedRoom) && 
+                    {this.state.roomCreateVisible && <RoomCreate onFinish={this.finishRoomCreate} />}
+                    {(selectedRoom) && (!this.state.roomCreateVisible) &&
                         <RoomDetail
                             room={selectedRoom}
                         />

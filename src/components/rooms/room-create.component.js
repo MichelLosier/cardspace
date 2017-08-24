@@ -12,8 +12,7 @@ class RoomCreate extends React.Component {
             roomSize: 4
         }
 
-        this.nameChange = this.nameChange.bind(this)
-        this.sizeChange = this.sizeChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
         this.closeForm = this.closeForm.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -24,9 +23,9 @@ class RoomCreate extends React.Component {
         const size = this.state.roomSize;
 
         Room$.createRoom(name,size, (data) => {
-            console.log(data);
+            this.closeForm(data);
         });
-        this.closeForm(true);
+        
     }
 
     closeForm(updateRooms) {
@@ -36,34 +35,32 @@ class RoomCreate extends React.Component {
     }
         
 
-    nameChange(e){
-        const name = e.target.value;
-        this.setState({roomName: name});
-       
-    }
-
-    sizeChange(e){
-        const size = e.target.value;
-        this.setState({roomSize: size});
-       
+    handleChange(e){
+        const name = e.target.name;
+        const value = e.target.value;
+        this.setState({
+            [name]: value
+          });
     }
 
     render(){
         const roomName = this.state.roomName
        return(
-            <div className="component-container width-6 border center-align popup">
+        <div className="component-container border center-align width-6">
                 <div className="header">
                     <h2>Create a Room</h2>
                 </div>
                 <div>
                     <form id="room-create" onSubmit={this.handleSubmit}>
-                        <label for="room">Room Name</label>
-                        <input name="room" type="text" value={this.state.roomName} onChange={this.nameChange}></input>
-                        <label for="size">Room Size</label>
-                        <input name="size" type="text" value={this.state.roomSize} onChange={this.sizeChange}></input>
-                        <input className="hover-border" type="submit" value="Create"></input>
+                        <label for="roomName">Room Name</label>
+                        <input name="roomName" type="text" value={this.state.roomName} onChange={this.handleChange}></input>
+                        <label for="roomSize">Room Size</label>
+
+                        <input name="roomSize" type="text" value={this.state.roomSize} onChange={this.handleChange}></input>
+                        <input className="button hover-border inline-form-button" type="submit" value="Create"></input>
+                        <a href="javascript:;" className="button hover-border inline-form-button" type="button" onClick={this.closeForm}>Cancel</a>
                     </form>
-                    <a href="javascript:;" className="button hover-border" type="button" onClick={this.closeForm}>Cancel</a>
+
                 </div>
             </div>
        );
