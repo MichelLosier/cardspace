@@ -45,6 +45,7 @@ class RoomCreate extends React.Component {
 
     render(){
         const roomName = this.state.roomName
+        const roomSize = this.state.roomSize
        return(
         <div className="component-container border center-align width-6">
                 <div className="header">
@@ -53,10 +54,10 @@ class RoomCreate extends React.Component {
                 <div>
                     <form id="room-create" onSubmit={this.handleSubmit}>
                         <label for="roomName">Room Name</label>
-                        <input name="roomName" type="text" value={this.state.roomName} onChange={this.handleChange}></input>
+                        <input name="roomName" type="text" value={roomName} onChange={this.handleChange}></input>
                         <label for="roomSize">Room Size</label>
 
-                        <input name="roomSize" type="text" value={this.state.roomSize} onChange={this.handleChange}></input>
+                        <input name="roomSize" type="text" value={roomSize} onChange={this.handleChange}></input>
                         <input className="button hover-border inline-form-button" type="submit" value="Create"></input>
                         <a href="javascript:;" className="button hover-border inline-form-button" type="button" onClick={this.closeForm}>Cancel</a>
                     </form>
