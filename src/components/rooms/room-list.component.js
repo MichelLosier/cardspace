@@ -4,7 +4,7 @@ import RoomListItem from './room-list-item.component';
 class RoomList extends React.Component {
     constructor(){
         super();
-
+        this.showRoomCreate = this.showRoomCreate.bind(this);
     }
 
     roomListing(rooms){
@@ -26,6 +26,10 @@ class RoomList extends React.Component {
         return roomList;
     }
 
+    showRoomCreate(){
+        this.props.onShowRoomCreate();
+    }
+
     render(){
         const rooms = this.props.list;
         return(
@@ -33,16 +37,21 @@ class RoomList extends React.Component {
                 <div className="header">
                     <h3>Rooms</h3>
                 </div>
-                <ul className="object-list">
-                    {(rooms.length != 0) ? (
-                        this.roomListing(rooms)
-                        ) : (
-                        <div>
-                            <p>No Rooms Available</p>
-                        </div>
-                        )
-                    }
-                </ul>
+                <div className="component-container">
+                    <ul className="object-list">
+                        {(rooms.length != 0) ? (
+                            this.roomListing(rooms)
+                            ) : (
+                            <div>
+                                <p>No Rooms Available</p>
+                            </div>
+                            )
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <a href="javascript:;" className="button hover-border" onClick={this.showRoomCreate}>Create Room</a>
+                </div>
             </div>
         );
     }

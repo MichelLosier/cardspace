@@ -3,9 +3,9 @@
 class RoomService {
     constructor(){
         this.baseUrl = `api/room/`;
-        this.baseHeaders = new Headers({
+        this.baseHeaders = {
             'Content-Type': 'application/json'
-        });
+        };
     }
     //get all rooms
     getRooms(callback){
@@ -44,13 +44,19 @@ class RoomService {
 
 
     //Create a room
-    createRoom(headers, data, callback){
-        const _headers = this.baseHeaders.assign(JSON.stringify(headers));
+    createRoom(name,size, callback){
+        const data = {
+            alias: name,
+            roomSize: size
+        }
+
+        const headers =  new Headers(Object.assign(this.baseHeaders,{'user-id': localStorage.getItem('uid')}));
         const request = new Request(`${this.baseUrl}create`,{
             method: 'POST',
             body: JSON.stringify(data),
-            headers: _headers
+            headers: headers
         });
+
         fetch(request).then((response) => {
             return response.json();
         }).then((data) => {
