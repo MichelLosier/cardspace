@@ -1,21 +1,14 @@
 import React from 'react';
 import {Route, Link} from 'react-router-dom';
 
-import RoomService from '../../services/room.service'
+import UserList from '../user/user-list.component';
+
+import RoomService from '../../services/room.service';
 
 class RoomDetail extends React.Component {
     constructor(){
         super();
         this.Room$ = new RoomService();
-    }
-
-    userList(users){
-        users.map((user) => {
-            //TODO USER LIST COMPONENT
-            return(
-                <li>{user}</li>
-            )
-        });
     }
 
     joinRoom(roomId){
@@ -36,18 +29,10 @@ class RoomDetail extends React.Component {
                 </div>
                 <p>Owner: {room.owner}</p>
                 <p>Users: {room.users.length} / {room.roomSize}</p>
-                    <div className="component-container">
-                        <ul className="object-list">
-                            {(room.users.length != 0) ? (
-                                this.userList(room.users)
-                                ) : (
-                                <div>
-                                    <p>No Users In the Room</p>
-                                </div>
-                                )
-                            }
-                        </ul>
-                    </div>
+                <UserList
+                    users={room.users}
+                    onUserSelect={(user)=>{return ''}}
+                />
                 <div>
                     <Link 
                         className="button hover-border"

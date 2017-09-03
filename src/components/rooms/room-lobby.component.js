@@ -26,7 +26,10 @@ class RoomLobby extends React.Component {
     }
 
     setSelectedRoom(room) {
-        this.setState({selectedRoom: room});
+        Room$.getRoom(room.id, (data) => {
+            this.setState({selectedRoom: data});
+        });
+
     }
 
     getRoomList(){

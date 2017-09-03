@@ -1,12 +1,17 @@
 import React from 'react';
 
+import UserList from '../user/user-list.component';
+
 import RoomService from '../../services/room.service';
 
 class Room extends React.Component {
     constructor(){
         super();
         this.state = {
-            room: {}
+            room: {
+                alias: 'Room',
+                users:[]
+            }
         };
         this.Room$ = new RoomService();
     }
@@ -31,6 +36,10 @@ class Room extends React.Component {
                 <div className="header">
                     <h2>{Room.alias}</h2>
                 </div>   
+                <UserList
+                    users={Room.users}
+                    onUserSelect={(user)=>{return ''}}
+                />
             </div>
         )
     }
