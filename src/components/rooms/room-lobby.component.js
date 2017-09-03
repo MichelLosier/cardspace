@@ -64,12 +64,14 @@ class RoomLobby extends React.Component {
                             room={selectedRoom}
                         />
                     }
-                    <RoomList
-                        list={list}
-                        onRoomSelect={this.setSelectedRoom}
-                        selectedRoom={selectedRoom}
-                        onShowRoomCreate={this.showRoomCreate}
-                    />
+                    <div className="width-4">
+                        <RoomList
+                            list={list}
+                            onRoomSelect={this.setSelectedRoom}
+                            selectedRoom={selectedRoom}
+                            onShowRoomCreate={this.showRoomCreate}
+                        />
+                    </div>
                 </div>
             </div>
         );

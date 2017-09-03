@@ -1,9 +1,12 @@
 import React from 'react';
 import {Route, Link} from 'react-router-dom';
 
+import RoomService from '../../services/room.service'
+
 class RoomDetail extends React.Component {
     constructor(){
         super();
+        this.Room$ = new RoomService();
     }
 
     userList(users){
@@ -12,6 +15,15 @@ class RoomDetail extends React.Component {
             return(
                 <li>{user}</li>
             )
+        });
+    }
+
+    joinRoom(roomId){
+        const data = {
+            action: 'JOIN'
+        }
+        this.Room$.updateRoom(roomId, data, (res) => {
+            return;
         });
     }
 
@@ -37,7 +49,10 @@ class RoomDetail extends React.Component {
                         </ul>
                     </div>
                 <div>
-                    <Link className="button hover-border" to={`/room/${room.id}`}>Join Room</Link>
+                    <Link 
+                        className="button hover-border"
+                        onClick={this.joinRoom(room.id)}
+                        to={`/room/${room.id}`}>Join Room</Link>
                 </div>
             </div>
         )

@@ -31,8 +31,8 @@ class Main extends React.Component {
         const id = window.localStorage.getItem('uid');
         if (id) {
             User$.getUser(id, (data) => {
-                console.log(data[id]);
-                this.setLocalUser(data[id]);
+                console.log(data);
+                this.setLocalUser(data);
             });
         }
     }

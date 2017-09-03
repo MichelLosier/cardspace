@@ -4,14 +4,14 @@
 class UserService {
 
     constructor(){
-        this.baseUrl = `api/user/`;
+        this.baseUrl = `${window.location.protocol}//${window.location.host}/api/user/`;
         this.baseHeaders = new Headers({
             'Content-Type': 'application/json'
         });
     }
 
     getUser(id, callback){
-        const request = new Request(`${this.baseUrl}?id=${id}`, {
+        const request = new Request(`${this.baseUrl}${id}`, {
             method: 'GET',
             headers: this.baseHeaders
         });
