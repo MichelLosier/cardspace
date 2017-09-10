@@ -2,7 +2,7 @@
 
 class RoomService {
     constructor(){
-        this.baseUrl = `api/room/`;
+        this.baseUrl = `${window.location.protocol}//${window.location.host}/api/room/`;
         this.baseHeaders = {
             'Content-Type': 'application/json'
         };
@@ -27,7 +27,7 @@ class RoomService {
 
     //Get a room
     getRoom(id, callback){
-        const request = new Request(`${this.baseUrl}?:${id}`, {
+        const request = new Request(`${this.baseUrl}${id}`, {
             method: 'GET',
             headers: this.baseHeaders
         });
@@ -76,13 +76,13 @@ class RoomService {
     //			action: "JOIN" or "LEAVE"
     //		}
     updateRoom(id, data, callback){
-        const headers = this.baseHeaders.assign({
+        const headers = new Headers(Object.assign(this.baseHeaders, {
                 'user-id': localStorage.getItem('uid')
-            });
-        const request = new Request(`${this.baseUrl}?:${id}`, {
+            }));
+        const request = new Request(`${this.baseUrl}${id}`, {
             method: 'PATCH',
             headers: headers,
-            body: data
+            body: JSON.stringify(data)
         });
         fetch(request).then((response) => {
             return response.json();

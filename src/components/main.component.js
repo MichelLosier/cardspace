@@ -31,8 +31,8 @@ class Main extends React.Component {
         const id = window.localStorage.getItem('uid');
         if (id) {
             User$.getUser(id, (data) => {
-                console.log(data[id]);
-                this.setLocalUser(data[id]);
+                console.log(data);
+                this.setLocalUser(data);
             });
         }
     }
@@ -79,7 +79,7 @@ class Main extends React.Component {
             <div>
                 <div className="main-header layout-container">
                     <div>
-                        <h1>cardspace</h1>
+                        <h1><a href="/">cardspace</a></h1>
                     </div>
                     <div>
                         <p>UserId: {state.user.id}</p>

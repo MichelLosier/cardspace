@@ -6,16 +6,16 @@ body {
 }
 h1 {
     margin: 0;
-    font-size: 2.25rem;
+    font-size: 1.75rem;
     color: white;
 }
 
 h2 {
-    font-size: 1.75rem
+    font-size: 1.5rem
 }
 
 h3 {
-    font-size: 1.5rem
+    font-size: 1.25rem
 }
 
 h2, h3 {
@@ -23,6 +23,14 @@ h2, h3 {
     color: rgba(119, 191, 163, 1.0)
 }
 
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h1 a {
+    color:white
+}
 
 /* Layout */
 
@@ -144,7 +152,7 @@ ul.object-list {
     padding: 1px;
     margin: 0;
     overflow-y: scroll;
-    background-color: #EDEEC9;
+    background-color: white;
     border:1px solid #666;
     height:470px
 }

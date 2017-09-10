@@ -26,7 +26,10 @@ class RoomLobby extends React.Component {
     }
 
     setSelectedRoom(room) {
-        this.setState({selectedRoom: room});
+        Room$.getRoom(room.id, (data) => {
+            this.setState({selectedRoom: data});
+        });
+
     }
 
     getRoomList(){
@@ -64,12 +67,14 @@ class RoomLobby extends React.Component {
                             room={selectedRoom}
                         />
                     }
-                    <RoomList
-                        list={list}
-                        onRoomSelect={this.setSelectedRoom}
-                        selectedRoom={selectedRoom}
-                        onShowRoomCreate={this.showRoomCreate}
-                    />
+                    <div className="width-4">
+                        <RoomList
+                            list={list}
+                            onRoomSelect={this.setSelectedRoom}
+                            selectedRoom={selectedRoom}
+                            onShowRoomCreate={this.showRoomCreate}
+                        />
+                    </div>
                 </div>
             </div>
         );
