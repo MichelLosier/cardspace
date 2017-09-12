@@ -3,7 +3,12 @@ const apiRouter = require('./api/router');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-let app = express();
+const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http, {
+  path: '/api/sockets'
+});
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -16,7 +21,12 @@ app.use(function errorHandler (err, req, res, next) {
   res.render('error', { error: err })
 });
 
-let port = process.env.PORT || 8080;
+io.on('connection', function(socket){
+  
+  console.log('a user connected')
+});
+
+const port = process.env.PORT || 8080;
 
 app.listen(port);
 console.log('Server running on port: ' + port);
