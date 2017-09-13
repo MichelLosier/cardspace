@@ -1,3 +1,4 @@
+
 const express = require('express');
 const apiRouter = require('./api/router');
 const path = require('path');
@@ -8,7 +9,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http, {
   path: '/api/sockets'
 });
-
+const sockets = require('./api/sockets');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
