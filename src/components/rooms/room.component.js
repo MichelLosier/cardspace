@@ -3,6 +3,7 @@ import React from 'react';
 import UserList from '../user/user-list.component';
 
 import RoomService from '../../services/room.service';
+import { RoomSocket } from '../../services/sockets.service';
 
 class Room extends React.Component {
     constructor(){
@@ -18,6 +19,7 @@ class Room extends React.Component {
 
     componentDidMount(){
         this.getRoomInfo();
+        RoomSocket.subscribeUserListChange(this.updateUserList);
     }
 
     getRoomInfo(){
@@ -26,6 +28,14 @@ class Room extends React.Component {
             this.setState({
                 room: room
             })
+        });
+    }
+
+    updateUserList(users){
+        this.setState({
+            room: {
+                users: []
+            }
         });
     }
 

@@ -1,5 +1,6 @@
 const Room = require('../models/room');
 const Crypto = require('crypto');
+const Sockets = require('../api/sockets')
 
 const rooms = {};
 const DEFAULT_ROOM_SIZE = 4;
@@ -29,6 +30,7 @@ exports.addUser = function (id, userId) {
 		throw Error(`Cannot add  user ${userId} to room ${id}. Reason: Room is full`)
 	}
 	room.addUser(userId);
+	eventDispatch('USER_LIST_CHANGE', {id: id});
 }
 
 exports.removeUser = function (id, userId) {
@@ -68,3 +70,7 @@ function generateRoomAlias() {
 	return `${owners[Math.floor(Math.random()*owners.length)]}'s ${adjectives[Math.floor(Math.random()*adjectives.length)]} ${spaces[Math.floor(Math.random()*spaces.length)]}`
 }
 
+function eventDispatch(event, data){
+	// Sockets.room.to(location).emit(event, data);
+	Sockets.room.reducer(event, data);
+}

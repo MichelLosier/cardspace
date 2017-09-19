@@ -9,7 +9,8 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http, {
   path: '/api/sockets'
 });
-const sockets = require('./api/sockets');
+
+exports.io = io;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -31,3 +32,4 @@ const port = process.env.PORT || 8080;
 
 app.listen(port);
 console.log('Server running on port: ' + port);
+
