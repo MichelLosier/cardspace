@@ -19,7 +19,7 @@ class Room extends React.Component {
 
     componentDidMount(){
         this.getRoomInfo();
-        RoomSocket.subscribeUserListChange(this.updateUserList);
+        RoomSocket.subscribeUserListChange((data) => {this.updateUserList(data)});
     }
 
     getRoomInfo(){
@@ -32,10 +32,10 @@ class Room extends React.Component {
     }
 
     updateUserList(users){
-        this.setState({
-            room: {
-                users: []
-            }
+        this.setState((prevState) => {
+            const room = prevState.room;
+            room.users = users;
+            return {room: room};
         });
     }
 

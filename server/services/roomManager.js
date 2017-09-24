@@ -1,7 +1,8 @@
 const Room = require('../models/room');
 const Crypto = require('crypto');
-const Sockets = require('../api/sockets')
+const apiEvents = require('./apiEvents');
 
+const apiEmitter = apiEvents.emitter;
 const rooms = {};
 const DEFAULT_ROOM_SIZE = 4;
 const DEFAULT_ROOM_OWNER = "Anonymous"
@@ -40,6 +41,7 @@ exports.removeUser = function (id, userId) {
 	} else {
 		throw Error(`${userId} not found in room ${id}`)
 	}
+	eventDispatch('USER_LIST_CHANGE', {id: id});
 }
 
 exports.getRooms = function () {
@@ -71,6 +73,5 @@ function generateRoomAlias() {
 }
 
 function eventDispatch(event, data){
-	// Sockets.room.to(location).emit(event, data);
-	Sockets.room.reducer(event, data);
+	apiEmitter.emit(event, data);
 }

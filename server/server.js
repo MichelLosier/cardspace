@@ -5,12 +5,17 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http, {
-  path: '/api/sockets'
+const port = process.env.PORT || 8080;
+
+const server = require('http').Server(app);
+const io = require('socket.io')(server, {
+  path: '/sockets'
 });
 
-exports.io = io;
+const apiEvents = require('./services/apiEvents')
+const socketRouting = require('./api/sockets')(io, apiEvents.emitter);
+
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -19,17 +24,14 @@ app.use('/', express.static(path.join(__dirname, '../build')));
 
 app.use('/api/', apiRouter);
 app.use(function errorHandler (err, req, res, next) {
-  res.status(500)
-  res.render('error', { error: err })
+  res.status(500).send(JSON.stringify({ error: err }));
 });
 
 io.on('connection', function(socket){
-  
   console.log('a user connected')
 });
 
-const port = process.env.PORT || 8080;
 
-app.listen(port);
+server.listen(port);
 console.log('Server running on port: ' + port);
 
