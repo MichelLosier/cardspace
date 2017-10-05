@@ -1,6 +1,8 @@
 const Room = require('../models/room');
 const Crypto = require('crypto');
+const apiEvents = require('./apiEvents');
 
+const apiEmitter = apiEvents.emitter;
 const rooms = {};
 const DEFAULT_ROOM_SIZE = 4;
 const DEFAULT_ROOM_OWNER = "Anonymous"
@@ -29,6 +31,7 @@ exports.addUser = function (id, userId) {
 		throw Error(`Cannot add  user ${userId} to room ${id}. Reason: Room is full`)
 	}
 	room.addUser(userId);
+	eventDispatch('USER_LIST_CHANGE', {id: id});
 }
 
 exports.removeUser = function (id, userId) {
@@ -38,6 +41,7 @@ exports.removeUser = function (id, userId) {
 	} else {
 		throw Error(`${userId} not found in room ${id}`)
 	}
+	eventDispatch('USER_LIST_CHANGE', {id: id});
 }
 
 exports.getRooms = function () {
@@ -68,3 +72,6 @@ function generateRoomAlias() {
 	return `${owners[Math.floor(Math.random()*owners.length)]}'s ${adjectives[Math.floor(Math.random()*adjectives.length)]} ${spaces[Math.floor(Math.random()*spaces.length)]}`
 }
 
+function eventDispatch(event, data){
+	apiEmitter.emit(event, data);
+}
