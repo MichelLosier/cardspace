@@ -18,10 +18,12 @@ userRoutes.create.POST = function(req, res) {
 
 // GET - /api/user/:id
 userRoutes.id.GET = function(req, res) {
-	
-	//get userJSON by ID
-	let userJSON = userManager.getUser(req.params.id).toJSON();
-	res.status(200).json(userJSON);
+	const user = userManager.getUser(req.params.id);
+	if (user) {
+		res.status(200).json(user.toJSON());
+	} else {
+		res.status(404).json({error:`${req.params.id} userId not found`});		
+	}
 }
 
 // POST - /api/user/:id

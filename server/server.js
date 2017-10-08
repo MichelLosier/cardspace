@@ -24,6 +24,8 @@ app.use('/', express.static(path.join(__dirname, '../build')));
 
 app.use('/api/', apiRouter);
 app.use(function errorHandler (err, req, res, next) {
+  console.log(err)
+  console.log('some error happened sending 500')
   res.status(500).send(JSON.stringify({ error: err }));
 });
 
