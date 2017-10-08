@@ -8,7 +8,8 @@ class RoomListItem extends React.Component {
     }
 
 
-    handleClick(){
+    handleClick(e){
+        e.preventDefault();
         this.props.onSelect(this.props.room);
     }
 

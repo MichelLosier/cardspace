@@ -9,15 +9,12 @@ class RoomDetail extends React.Component {
     constructor(){
         super();
         this.Room$ = new RoomService();
+        this.handleJoinRoom = this.handleJoinRoom.bind(this);
     }
 
-    joinRoom(roomId){
-        const data = {
-            action: 'JOIN'
-        }
-        this.Room$.updateRoom(roomId, data, (res) => {
-            return;
-        });
+    handleJoinRoom(){
+        this.props.onJoinRoom(this.props.room);
+
     }
 
     render(){
@@ -36,7 +33,7 @@ class RoomDetail extends React.Component {
                 <div>
                     <Link 
                         className="button hover-border"
-                        onClick={this.joinRoom(room.id)}
+                        onClick={this.handleJoinRoom}
                         to={`/room/${room.id}`}>Join Room</Link>
                 </div>
             </div>

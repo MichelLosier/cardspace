@@ -18,6 +18,7 @@ class RoomLobby extends React.Component {
         this.setSelectedRoom = this.setSelectedRoom.bind(this);
         this.showRoomCreate = this.showRoomCreate.bind(this);
         this.finishRoomCreate = this.finishRoomCreate.bind(this);
+        this.handleJoinRoom = this.handleJoinRoom.bind(this);
     }
 
     componentDidMount(){
@@ -30,6 +31,15 @@ class RoomLobby extends React.Component {
             this.setState({selectedRoom: data});
         });
 
+    }
+
+    handleJoinRoom(room) {
+        const data = {
+            action: 'JOIN'
+        }
+        Room$.updateRoom(room.id, data, (res) => {
+            return;
+        });
     }
 
     getRoomList(){
@@ -54,6 +64,7 @@ class RoomLobby extends React.Component {
         const selectedRoom = this.state.selectedRoom;
         const roomCreateVisible = this.state.roomCreateVisible;
         const list = this.state.rooms;
+        const handleJoinRoom = this.handleJoinRoom;
         return(
             <div className="center-align width-12">
                 
@@ -65,6 +76,7 @@ class RoomLobby extends React.Component {
                     {(selectedRoom) && (!this.state.roomCreateVisible) &&
                         <RoomDetail
                             room={selectedRoom}
+                            onJoinRoom={handleJoinRoom}
                         />
                     }
                     <div className="width-4">
