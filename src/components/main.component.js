@@ -14,7 +14,7 @@ class Main extends React.Component {
     constructor(){
         super();
         this.state = {
-            userLoggedIn: false,
+            userLoggedIn: true,
             user: {
                 id: undefined,
                 alias: undefined
@@ -30,10 +30,17 @@ class Main extends React.Component {
     checkLocalUser(){
         const id = window.localStorage.getItem('uid');
         if (id) {
-            User$.getUser(id, (data) => {
-                console.log(data);
-                this.setLocalUser(data);
+            User$.getUser(id, (user) => {
+                if (!user.id) {
+                    console.log('user in local storage not found on server.. create new user');
+                    this.setState({userLoggedIn: false});
+                } else {
+                    console.log('existing user found in local storage.. setting.')
+                    this.setLocalUser(user);
+                }
             });
+        } else {
+            this.setState({userLoggedIn: false});
         }
     }
 

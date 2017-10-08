@@ -16,6 +16,10 @@ class UserService {
             headers: this.baseHeaders
         });
         fetch(request).then((response) => {
+            //No user found with that ID
+            if (response.status == 404) {
+                return {}
+            }
             return response.json();
         }).then((data) => {
             if(callback) callback(data);
