@@ -21,4 +21,9 @@ apiEventEmitter.on('USER_LIST_CHANGE', function(data){
    apiEventEmitter.emit('$_USER_LIST_CHANGE', users);
 });
 
+apiEventEmitter.on('ADD_USER_TO_ROOM', function(data){
+    //TODO fetch session id from users[id]
+    apiEventEmitter.emit('$_ADD_USER_TO_ROOM', data)
+})
+
 exports.emitter = apiEventEmitter;
