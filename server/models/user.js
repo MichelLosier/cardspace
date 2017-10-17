@@ -2,13 +2,18 @@ class User {
 	constructor(id, alias){
 		this.id = id;
 		this.alias = alias;
+		this.socketId = '';
 	}
 
 	toJSON() {
 		return {
 			id: this.id,
-			alias: this.alias
+			alias: this.alias,
+			socket: this.socketId
 		}
+	}
+	setSocketId(sid){
+		this.socketId = sid;
 	}
 }
 

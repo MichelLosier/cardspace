@@ -1,4 +1,4 @@
-
+import {identify} from './sockets.service';
 // get user
 //TODO get id from local storage
 class UserService {
@@ -46,6 +46,7 @@ class UserService {
         }).then((data) => {
             localStorage.setItem('uid', data.id);
             if(callback) callback(data);
+            identify(data.id);
             return data;
         })
         .catch((err) => {

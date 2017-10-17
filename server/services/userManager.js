@@ -22,6 +22,11 @@ exports.userExists = function(id) {
 	return users[id] ? true : false;
 }
 
+exports.updateUserSocketId = function(id, sid){
+	console.log(`updating user: ${id}, with socketId: ${sid}`);
+	users[id].setSocketId(sid);
+}
+
 function generateId(byteLen) {
 	return Crypto.randomBytes(byteLen).toString('hex');
 }
