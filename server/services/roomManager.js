@@ -32,7 +32,6 @@ exports.addUser = function (id, userId) {
 	}
 	room.addUser(userId);
 	eventDispatch('USER_LIST_CHANGE', {id: id});
-	eventDispatch('ADD_USER_TO_ROOM', {roomId: id, userId: userId });
 }
 
 exports.removeUser = function (id, userId) {

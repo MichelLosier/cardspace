@@ -1,20 +1,36 @@
 
 module.exports = (io, service) => {
+    io.on('connection', function(socket){
+        console.log(`a user connected: ${socket.id}`)
+      });
     //ROOM EVENTS
     const room = io.of('/room');
+    const game = io.of('/game')
+
     room.on('connection', function(socket){
-        socket.emit('user joined a room');
-       //Event subscriptions
-        eventServiceSubscribe('$_USER_LIST_CHANGE', (data) => {
-             socket.emit(event, JSON.stringify(_data));
+        console.log('user join room NSP');
+
+        socket.on('$_JOIN_ROOM', (data) => {
+            console.log(`heard event '$_JOIN_ROOM on /room`);
+            service.emit('ROOM_USER_CHECK', data);
         });
-        eventServiceSubscribe('$_ADD_USER_TO_ROOM', (data) => {
-            socket.join(data.roomId)
+       //Event subscriptions
+        eventSub('$_USER_LIST_CHANGE', (data) => {
+             socket.emit('$_USER_LIST_CHANGE', JSON.stringify(data));
+        });
+        eventSub('$_ROOM_USER_CHECK', (data) => {
+            let response = {res: `You are not allowed to join the channel for room: ${data.roomId} `}
+            if (data.allowed) {
+                socket.join(data.roomId)
+                response.res = `You have successfully joined the channel for room: ${data.roomId}`
+            }
+            socket.emit('$_JOIN_ROOM', JSON.stringify(response));
         });
     });
 
+
     //GAME EVENTS
-    const game = io.of('/game')
+    
     game.on('connection', function(socket){
         socket.emit('user joined a game');
     });
@@ -24,10 +40,10 @@ module.exports = (io, service) => {
     //Pass socket instance to be used
     //Pass callback to transform data
    
-    function eventServiceSubscribe(event, callback){
+    function eventSub(event, callback){
         callback = callback || ((data) => {return data});
-        service.on(event, (data) => {
-            const _data = callback(data)
+        service.on(event, (data) =>{
+           callback(data);
         });
     }
 }

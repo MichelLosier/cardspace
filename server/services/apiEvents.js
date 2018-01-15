@@ -14,16 +14,25 @@ const userManager = require('../services/userManager');
 //Server events get renamed with $ at beginning to mark as socket event
 
 apiEventEmitter.on('USER_LIST_CHANGE', function(data){
-    const roomObj = roomManager.getRoom(data.id);
-    const users = roomObj.users.map(function(user){
+    const room = roomManager.getRoom(data.id);
+    const users = room.users.map(function(user){
         return userManager.getUser(user);
     })
    apiEventEmitter.emit('$_USER_LIST_CHANGE', users);
 });
 
-apiEventEmitter.on('ADD_USER_TO_ROOM', function(data){
-    //TODO fetch session id from users[id]
-    apiEventEmitter.emit('$_ADD_USER_TO_ROOM', data)
+apiEventEmitter.on('ROOM_USER_CHECK', function(data){
+    console.log(`checking for ${data.uid} in room ${data.roomId}`);
+    let check = {
+        roomId: data.roomId,
+        allowed: false
+    }
+    const room = roomManager.getRoom(data.roomId);
+    if (room.users.indexOf(data.uid) > -1){
+        console.log(`check passed`);
+        check.allowed = true
+    }
+    apiEventEmitter.emit('$_ROOM_USER_CHECK', check);
 })
 
 exports.emitter = apiEventEmitter;

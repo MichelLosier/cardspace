@@ -29,11 +29,6 @@ app.use(function errorHandler (err, req, res, next) {
   res.status(500).send(JSON.stringify({ error: err }));
 });
 
-io.on('connection', function(socket){
-  console.log('a user connected')
-});
-
-
 server.listen(port);
 console.log('Server running on port: ' + port);
 
