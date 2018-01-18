@@ -1,4 +1,4 @@
-
+import { RoomSocket } from './sockets.service';
 
 class RoomService {
     constructor(){
@@ -84,9 +84,16 @@ class RoomService {
             headers: headers,
             body: JSON.stringify(data)
         });
+
         fetch(request).then((response) => {
-            return response.json();
+            if (response.ok){
+                return response.json();
+            }
         }).then((data) => {
+            RoomSocket.joinRoom({
+                uid: localStorage.getItem('uid'),
+                roomId: id
+            });
             if (callback) callback(data);
             return data;
         })

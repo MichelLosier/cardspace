@@ -25,13 +25,13 @@ exports.addUser = function (id, userId) {
 		console.log('User already a member')
 		throw Error(`Cannot add  user ${userId} to room ${id}. Reason: User already a member of room`);
 	}
-
+	
 	if (room.users.length == room.roomSize) {
 		console.log('Full room.')
 		throw Error(`Cannot add  user ${userId} to room ${id}. Reason: Room is full`)
 	}
 	room.addUser(userId);
-	eventDispatch('USER_LIST_CHANGE', {id: id});
+	eventDispatch('ROOM_UPDATE', room);
 }
 
 exports.removeUser = function (id, userId) {

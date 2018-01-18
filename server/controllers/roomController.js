@@ -36,12 +36,13 @@ roomRoutes.id.GET = function(req, res) {
             });
             return;
         }
-        let roomObj = roomManager.getRoom(req.params.id).toJSON();
-        
-            roomObj.users = roomObj.users.map(function(userId) {
-                return userManager.getUser(userId);
-            });
-        res.status(200).json(roomObj);
+        const room = roomManager.getRoom(req.params.id).toJSON();
+        //deep copy
+        const _room = JSON.parse(JSON.stringify(room))  
+        _room.users = _room.users.map(function(userId) {
+            return userManager.getUser(userId);
+        });
+        res.status(200).json(_room);
     }
     // POST - /api/room/:id
 roomRoutes.id.POST = function(req, res) {
