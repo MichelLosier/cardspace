@@ -19,23 +19,19 @@ class Room extends React.Component {
 
     componentDidMount(){
         this.getRoomInfo();
-        RoomSocket.subscribeUserListChange((data) => {this.updateUserList(data)});
+        RoomSocket.subscribeRoomUpdates((data) => {this.updateRoom(data)});
     }
 
     getRoomInfo(){
         this.Room$.getRoom(this.props.match.params.roomId, (room) => {
             console.log(`room name retrieved: ${room.alias}`);
-            this.setState({
-                room: room
-            })
+            this.updateRoom(room);
         });
     }
 
-    updateUserList(users){
-        this.setState((prevState) => {
-            const room = prevState.room;
-            room.users = users;
-            return {room: room};
+    updateRoom(room){
+        this.setState({
+            room: room
         });
     }
 

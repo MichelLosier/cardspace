@@ -31,7 +31,7 @@ exports.addUser = function (id, userId) {
 		throw Error(`Cannot add  user ${userId} to room ${id}. Reason: Room is full`)
 	}
 	room.addUser(userId);
-	eventDispatch('USER_LIST_CHANGE', {id: id});
+	eventDispatch('ROOM_UPDATE', room);
 }
 
 exports.removeUser = function (id, userId) {

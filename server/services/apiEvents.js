@@ -13,12 +13,13 @@ const userManager = require('../services/userManager');
 //Basically transforms server event to client ingestible event
 //Server events get renamed with $ at beginning to mark as socket event
 
-apiEventEmitter.on('USER_LIST_CHANGE', function(data){
-    const room = roomManager.getRoom(data.id);
-    const users = room.users.map(function(user){
+apiEventEmitter.on('ROOM_UPDATE', function(room){
+    const _room = JSON.parse(JSON.stringify(room));
+    _room.users = _room.users.map(function(user){
         return userManager.getUser(user);
     })
-   apiEventEmitter.emit('$_USER_LIST_CHANGE', users);
+    
+    apiEventEmitter.emit('$_ROOM_UPDATE', _room);
 });
 
 apiEventEmitter.on('ROOM_USER_CHECK', function(data){

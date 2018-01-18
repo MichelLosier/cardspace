@@ -22,7 +22,6 @@ export const GameSocket = io(`${baseUrl}/game`, {
 //RoomSocket Actions
 
 RoomSocket.joinRoom = (data) => {
-    console.log(`attempting to join room ${data.roomId}`)
     RoomSocket.emit('$_JOIN_ROOM', data);
 }
 
@@ -30,13 +29,12 @@ RoomSocket.subscribeJoinRoom = (callback) => {
     RoomSocket.on('$_JOIN_ROOM', (data) => {
         const _data = JSON.parse(data)
         callback(_data)
-        console.log(_data.res);
     })
 }
 
 //RoomSocket Subscriptions
-RoomSocket.subscribeUserListChange = (callback) => {
-    RoomSocket.on('$_USER_LIST_CHANGE', (data) => {
+RoomSocket.subscribeRoomUpdates = (callback) => {
+    RoomSocket.on('$_ROOM_UPDATE', (data) => {
         const _data = JSON.parse(data)
         callback(_data);
     })

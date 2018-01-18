@@ -8,15 +8,13 @@ module.exports = (io, service) => {
     const game = io.of('/game')
 
     room.on('connection', function(socket){
-        console.log('user join room NSP');
 
         socket.on('$_JOIN_ROOM', (data) => {
-            console.log(`heard event '$_JOIN_ROOM on /room`);
             service.emit('ROOM_USER_CHECK', data);
         });
        //Event subscriptions
-        eventSub('$_USER_LIST_CHANGE', (data) => {
-             socket.emit('$_USER_LIST_CHANGE', JSON.stringify(data));
+        eventSub('$_ROOM_UPDATE', (data) => {
+             socket.emit('$_ROOM_UPDATE', JSON.stringify(data));
         });
         eventSub('$_ROOM_USER_CHECK', (data) => {
             let response = {res: `You are not allowed to join the channel for room: ${data.roomId} `}
